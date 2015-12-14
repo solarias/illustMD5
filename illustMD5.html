@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+        <meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="./css/illustMD5.css" />
+		
+		<title>MD5 일러스트 배틀</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+			<div id="frame_header">
+			
+				<p>MD5 일러스트 배틀</p>
+				
+			</div>
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+			<div id="frame_help">
+				<h1>게임 소개</h1>
+				<p>입력된 일러스트들을 바탕으로 능력치를 산출, 이후 두 일러스트가 싸움을 벌이는 게임입니다.</p>
+				<p>관심있는 일러스트들끼리 대결을 벌이고, 가장 강력한 일러스트를 찾아보세요.</p>
+				
+				<h2>게임 방법</h2>
+				<p>각 플레이어의 일러스트와 이름을 입력한 후 "대전 시작"을 클릭하세요.</p>
+				<p>(오직 일러스트만 능력치에 영향을 주며, 이름은 없어도 상관없습니다.)</p>
+				
+				<h2>플레이어 능력치 정보</h2>
+				<ul>
+					<li><span class="font_bold">체력</span> : 0이 되면 패배합니다. 10%, 20%, 30%가 감소할 때마다 각각 분노 레벨이 증가합니다.</li>
+					<li><span class="font_bold">공격력</span> : 이 수치만큼 상대에게 피해를 줍니다.</li>
+					<li><span class="font_bold">방어력</span> : 상대방이 주는 피해를 경감시킵니다.</li>
+					<li><span class="font_bold">분노 레벨</span> : 증가할 때마다 자신의 공격력 & 방어력이 증가합니다.</li>
+					<li><span class="font_bold">치명타 게이지</span> : 공격을 주거나 받으면 상승하며, 최대치가 되면 다음 공격 시 치명타를 날립니다.</li>
+					<li><span class="font_bold">치명타 공격력</span> : 치명타 공격 시 이 수치만큼 자신의 공격력을 증폭시킵니다.</li>
+					<li><span class="font_bold">속도</span> : 이 수치가 상대보다 높으면 먼저 공격합니다. (같을 경우 랜덤 선택)</li>
+				</ul>
+			</div>
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+			<div id="frame_battle">
+				
+				<!---->
+				
+				<div id="battle_gate_1" class="battle_gate"></div>
+				<div id="battle_gate_2" class="battle_gate"></div>
+				
+				<!---->
+				
+				<div id="battle_head">
+					
+					<div id="battle_life_1" class="battle_life">
+						<div class="battle_life_inline">
+							<div id="battle_life_bar_1" class="battle_life_bar"></div>
+							<div class="battle_life_section left left_1"></div>
+							<div class="battle_life_section left left_2"></div>
+							<div class="battle_life_section left left_3"></div>
+							<div id="battle_life_num_1" class="battle_life_num"></div>
+						</div>
+					</div>
+					
+					<div id="battle_turn">
+						30
+					</div>
+					
+					<div id="battle_life_2" class="battle_life">
+						<div class="battle_life_inline">
+							<div id="battle_life_bar_2" class="battle_life_bar"></div>
+							<div class="battle_life_section right right_1"></div>
+							<div class="battle_life_section right right_2"></div>
+							<div class="battle_life_section right right_3"></div>
+							<div id="battle_life_num_2" class="battle_life_num"></div>
+						</div>
+					</div>
+					
+				</div>
+				
+				<!---->
+				
+				<div id="battle_character_1" class="battle_character left flipped">
+					<div id="battle_character_front_1" class="battle_character_front">
+						<img id="battle_image_1" class="battle_image" />
+						<div id="battle_glass_1" class="battle_glass"></div>
+						<div id="battle_buff_1" class="battle_buff"></div>
+						
+						<div id="battle_character_first_1" class="battle_character_first">선 공</div>
+						<div id="battle_character_info_text_1" class="battle_character_info_text"></div>
+						<div id="battle_character_info_num_1" class="battle_character_info_num">100%</div>
+						<div id="battle_name_1" class="battle_name"></div>
+					</div>
+					<div id="battle_character_back_1" class="battle_character_back">
+					</div>
+				</div>
+				
+				<div id="battle_character_2" class="battle_character right flipped">
+					<div id="battle_character_front_2" class="battle_character_front">
+						<img id="battle_image_2" class="battle_image" />
+						<div id="battle_glass_2" class="battle_glass"></div>
+						<div id="battle_buff_2" class="battle_buff"></div>
+						
+						<div id="battle_character_first_2" class="battle_character_first">선 공</div>
+						<div id="battle_character_info_text_2" class="battle_character_info_text"></div>
+						<div id="battle_character_info_num_2" class="battle_character_info_num">100%</div>
+						<div id="battle_name_2" class="battle_name"></div>
+					</div>
+					<div id="battle_character_back_2" class="battle_character_back">
+					</div>
+				</div>
+				
+				<!---->
+				
+				<div id="battle_effect_1" class="battle_effect">
+					<!-- 히트 이펙트 -->
+					<div id="battle_effect_hit_1_0" class="battle_effect_hit side_1 rage_0"></div>
+					<div id="battle_effect_hit_1_1" class="battle_effect_hit side_1 rage_1"></div>
+					<div id="battle_effect_hit_1_2" class="battle_effect_hit side_1 rage_2"></div>
+					<div id="battle_effect_hit_1_3" class="battle_effect_hit side_1 rage_3"></div>
+					<!-- 히트 이펙트 -->
+					
+					<!-- 유리 조각 -->
+					<div id="battle_effect_particle_1" class="battle_effect_particle"></div>
+					<!-- 유리 조각 -->
+					
+					<!-- 대미지 -->
+					<div id="battle_damage_1" class="battle_damage"></div>
+					<!-- 대미지 -->
+					
+					<!-- 크리티컬 -->
+					<div id="battle_effect_critical_1" class="battle_effect_critical"></div>
+					<!-- 크리티컬 -->
+				</div>
+				
+				<div id="battle_effect_2" class="battle_effect">
+					<!-- 히트 이펙트 -->
+					<div id="battle_effect_hit_2_0" class="battle_effect_hit side_2 rage_0"></div>
+					<div id="battle_effect_hit_2_1" class="battle_effect_hit side_2 rage_1"></div>
+					<div id="battle_effect_hit_2_2" class="battle_effect_hit side_2 rage_2"></div>
+					<div id="battle_effect_hit_2_3" class="battle_effect_hit side_2 rage_3"></div>
+					<!-- 히트 이펙트 -->
+					
+					<!-- 유리 조각 -->
+					<div id="battle_effect_particle_2" class="battle_effect_particle"></div>
+					<!-- 유리 조각 -->
+					
+					<!-- 대미지 -->
+					<div id="battle_damage_2" class="battle_damage"></div>
+					<!-- 대미지 -->
+					
+					<!-- 크리티컬 -->
+					<div id="battle_effect_critical_2" class="battle_effect_critical"></div>
+					<!-- 크리티컬 -->
+				</div>
+				
+				<!---->
+				
+				<div id="battle_sign_win_1" class="battle_sign_win"></div>
+				
+				<div id="battle_sign_ready"></div>
+				<div id="battle_sign_fight"></div>
+				
+				<div id="battle_sign_timeover"></div>
+				<div id="battle_sign_draw"></div>
+				
+				<div id="battle_sign_win_2" class="battle_sign_win"></div>
+				
+				<!---->
+				
+				<div id="battle_stat_atk_cover_1" class="battle_stat_atk_cover">
+					<img src="http://cfile216.uf.daum.net/image/230DF244562204D51CE436" /><span id="battle_stat_atk_1" class="battle_stat_atk"></span>
+				</div>
+				<div id="battle_stat_rage_1" class="battle_stat_rage">0</div>
+				<div id="battle_stat_def_cover_1" class="battle_stat_def_cover">
+					<img src="http://cfile228.uf.daum.net/image/222BD644562204D701D0DA" /><span id="battle_stat_def_1" class="battle_stat_def"></span>
+				</div>
+				
+				<div id="battle_stat_atk_cover_2" class="battle_stat_atk_cover">
+					<span id="battle_stat_atk_2" class="battle_stat_atk"></span><img src="http://cfile216.uf.daum.net/image/230DF244562204D51CE436" />
+				</div>
+				<div id="battle_stat_rage_2" class="battle_stat_rage">0</div>
+				<div id="battle_stat_def_cover_2" class="battle_stat_def_cover">
+					<span id="battle_stat_def_2" class="battle_stat_def"></span><img src="http://cfile228.uf.daum.net/image/222BD644562204D701D0DA" />
+				</div>
+				
+				<!---->
+				
+				<div id="battle_critical_1" class="battle_critical">
+					<div id="battle_critical_title_1" class="battle_critical_title">치명타</div>
+						<hr />
+					<div id="battle_critical_progress_1" class="battle_critical_progress">
+						<div id="battle_critical_bar_1" class="battle_critical_bar"></div>
+					</div>
+						<hr />
+					<div id="battle_critical_damage_1" class="battle_critical_damage">x1.5</div>
+				</div>
+				<div id="battle_critical_2" class="battle_critical">
+					<div id="battle_critical_title_2" class="battle_critical_title">치명타</div>
+						<hr />
+					<div id="battle_critical_progress_2" class="battle_critical_progress">
+						<div id="battle_critical_bar_2" class="battle_critical_bar"></div>
+					</div>
+						<hr />
+					<div id="battle_critical_damage_2" class="battle_critical_damage">x1.5</div>
+				</div>
+			</div>
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+			<div id="frame_input">
+				
+				<div id="input_image_cover_1" class="input_image_cover">
+					<div id="input_image_1" class="input_image">
+						<p id="input_image_notice_1" class="input_image_notice">일러스트<br/>불러오는 중...</p>
+						<img id="input_image_img_1" class="input_image_img" src="" />
+					</div>
+				</div>
+				
+				<div id="input_box">
+					
+					<div id="input_title_1" class="input_title">플레이어 1</div>
+					<div id="input_title_2" class="input_title">플레이어 2</div>
+					
+					<div id="input_slot_1" class="input_slot">
+						<label for="input_file_1">
+							일러스트 :
+						</label>
+						<p>
+							<input id="input_file_1" class="input_file" type="file" />
+						</p>
+							<hr/>
+						<p>
+							이&nbsp;&nbsp;름 : <input id="input_name_1" class="input_name" type="text" value="" />
+						</p>
+					</div>
+					<div id="input_slot_2" class="input_slot">
+						<label for="input_file_2">
+							일러스트 : 
+						</label>
+						<p>
+							<input id="input_file_2" class="input_file" type="file" />
+						</p>
+							<hr/>
+						<p>
+							이&nbsp;&nbsp;름 : <input id="input_name_2" class="input_name" type="text" value="" />
+						</p>
+					</div>
+					
+					<div id="input_other">
+						<div id="input_option">
+							<div class="input_option_cover title">
+								게임 설정
+							</div>
+							
+							<div class="input_option_cover">
+								게임 속도 : 
+								<select id="input_option_speed">
+									<option value="3">매우 빠르게</option>
+									<option value="2">빠르게</option>
+									<option value="1" selected>보통</option>
+									<option value="0.7">느리게</option>
+									<option value="0.5">매우 느리게</option>
+								</select>
+							</div>
+							
+							<div class="input_option_cover">
+								배경 테마 : 
+								<select id="input_option_theme">
+									<option value="random">랜덤</option>
+									<option value="" disabled>=========</option>
+									<option value="seatrain">1. 해상열차</option>
+									<option value="street">2. 마을</option>
+									<option value="tower">3. 사신의 탑</option>
+									<option value="night">4. 야간 주둔지</option>
+									<option value="forest">5. 요정의 숲</option>
+									<option value="bakal">6. 불타는 성</option>
+								</select>
+							</div>
+							
+							<hr />
+							
+							<div class="input_option_cover">
+								<input id="input_option_sound" type="checkbox" checked/>
+								<label id="input_option_sound_label" for="input_option_sound"/>
+									BGM, 효과음 출력하기
+								</label>
+							</div>
+						</div>
+						
+						<button id="input_option_open">
+							<img src="http://cfile212.uf.daum.net/image/2109A344562204D82004F7"><p>게임 설정</p>
+						</button>
+						<input id="input_run" type="button" value="대전 시작" disabled />
+					</div>
+					
+				</div>
+				
+				<div id="input_image_cover_2" class="input_image_cover">
+					<div id="input_image_2" class="input_image">
+						<p id="input_image_notice_2" class="input_image_notice">일러스트<br/>불러오는 중...</p>
+						<img id="input_image_img_2" class="input_image_img" src="" />
+					</div>
+				</div>
+				
+			</div>
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+			<div id="frame_loading">
+				<button id="loading_run" class="loading_run" disabled>실행 준비중</button>
+				<p>이미지 로딩 : <span id="loading_num">0%</span></p>
+				<div id="loading_progress" class="loading_progress">
+					<div id="loading_bar" class="loading_bar"></div>
+				</div>
+			</div>
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+			<div id="frame_footer">
+				
+				<p>Made by : 루리웹 솔라리어스</p>
+				
+			</div>
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+			<div id="imagePreloader">
+			</div>
+			
+			<!----------------------------------------------------------------------------------------->
+			<!----------------------------------------------------------------------------------------->
+			
+		</div>
+		
+		<!-- 인터넷 익스플로러 9 차단 / 시작 -->
+		<!--[if lte IE 9 ]>
+		<script type="text/javascript" src="./js/no_ie9.js"></script>
+		<![endif]-->
+		<!-- 인터넷 익스플로러 9 차단 / 끝 -->
+		
+		<!--아웃소싱 / 시작-->
+		<script type="text/javascript" src="./js/md5.js"></script>
+		<script type="text/javascript" src="./js/seedrandom.js"></script>
+		
+		<script type="text/javascript" src="./js/requestAnimationFrame.js"></script>
+		<!--아웃소싱 / 끝-->
+		
+		<!--주 스크립트 / 시작-->
+		<script type="text/javascript" src="./js/illustMD5_variable.js"></script>
+		<script type="text/javascript" src="./js/illustMD5_subFunction.js"></script>
+		<script type="text/javascript" src="./js/illustMD5_mainFunction.js"></script>
+		<script type="text/javascript" src="./js/illustMD5_main.js"></script>
+		<!--주 스크립트 / 끝-->
+
+<!-- Histats.com  START (hidden counter)-->
+<script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
+<a href="http://www.histats.com" target="_blank" title="free geoip" ><script  type="text/javascript" >
+try {Histats.start(1,3208932,4,0,0,0,"");
+Histats.track_hits();} catch(err){};
+</script></a>
+<noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?3208932&101" alt="free geoip" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+
+	</body>
+</html>

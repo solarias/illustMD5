@@ -1,0 +1,1989 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+* {
+	padding:0px;
+	margin:0px;
+	border:0px;
+	
+	font-family:"Nanum Gothic", sans-serif;
+	font-size:13px;
+	text-decoration:none;
+}
+
+
+
+/*======================================================================================================*/
+/* ※ 0. 공통 디자인 */
+/*======================================================================================================*/
+/*폰트 - 색상*/
+.font_orange{
+	color:orange;
+}
+.font_yellow{
+	color:yellow;
+}
+.font_blue{
+	color:blue;
+}
+/*폰트 - 디자인, 정렬*/
+.font_bold {
+	font-weight:bold;
+}
+.font_left {
+	text-align:left;
+}
+.font_center {
+	text-align:center;
+}
+.font_right {
+	text-align:right;
+}
+/*능력치 - 색상*/
+.stat_up {
+	color:#59FF00;
+}
+.stat_set {
+	color:inherit;
+}
+.stat_down {
+	color:orange;
+}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 0. 틀 & 최상단 */
+/*======================================================================================================*/
+body {
+	background-color:#808080;
+}
+	p, span {
+		font-size:inherit;
+	}
+
+#wrapper {
+	position:relative;
+	overflow:hidden;
+	
+	margin:0px auto;
+	width:800px;
+	height:704px;
+	
+	background:#303030;
+	border:1px black solid;
+	
+	color:white;
+}
+
+#frame_header {
+	position:relative;
+	
+	padding:5px;
+	width:100%;
+	height:60px;
+	
+	border-bottom:1px white solid;
+	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+	color:white;
+	font-size:40px;
+}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 1-1. 로딩 */
+/*======================================================================================================*/
+#frame_loading {
+	position:relative;
+	
+	padding:7px 5px;
+	width:100%;
+	height:215px;
+	
+	background:#202020;
+	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+	.loading_run {
+		margin:10px auto;
+		width:300px;
+		height:70px;
+		
+		background: #FFFFFF; /* default */
+		background: -moz-linear-gradient(top center, #FFFFFF, #A0A0A0);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #A0A0A0));
+		background: -ms-linear-gradient(top center, #FFFFFF, #A0A0A0);
+		background: linear-gradient(to bottom, #ffffff, #A0A0A0);
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#A0A0A0)";
+		
+		border:1px gray outset;
+		border-radius:10px;
+		
+		font-size:50px;
+		font-weight:bold;
+		
+		display:block;
+	}
+			.loading_run:hover {
+				box-shadow:0 0 3pt 2pt skyblue;
+				
+				cursor:pointer;
+				cursor:hand;
+			}
+			.loading_run:active {
+				background: #DEDEDE;
+			}
+		.loading_run.no {
+			background: #FF6A00; /* default */
+			background: -moz-linear-gradient(top center, #FFFFFF, #FF6A00);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #FF6A00));
+			background: -ms-linear-gradient(top center, #FFFFFF, #FF6A00);
+			background: linear-gradient(to bottom, #ffffff, #FF6A00);
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#FF6A00)";
+		}
+	#frame_loading p {
+		margin-top:15px;
+		margin-bottom:10px;
+		
+		height:35px;
+		
+		font-size:30px;
+	}
+	.loading_progress {
+		position:relative;
+		
+		margin-left:2px;
+		width:calc(100% - 4px);
+		height:50px;
+		
+		background:#404040;
+		border:1px black solid;
+		outline:2px white solid;
+		
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+		.loading_bar {
+			position:absolute;
+			top:0px;
+			left:0px;
+			
+			width:0%;
+			height:100%;
+			
+			background:yellow;
+			border-right:1px black solid;
+		}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 1-2. 도움말 */
+/*======================================================================================================*/
+#frame_help {
+	position:absolute;
+	top:81px;
+	left:20px;
+	z-index:22;
+	
+	padding:10px;
+	width:760px;
+	height:360px;
+	
+	background:rgba(255,255,255,0.6);
+	border-radius:20px;
+	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+	color:black;
+}
+	#frame_help h1 {
+		margin:0px 0px 4px 10px;
+		
+		font-size:20px;
+	}
+	#frame_help h2 {
+		margin:19px 0px 4px 10px;
+		
+		font-size:20px;
+	}
+	#frame_help p {
+		font-size:17px;
+	}
+	#frame_help ul {
+		list-style-type:disc;
+	}
+		#frame_help ul li {
+			margin-left:20px;
+			
+			font-size:17px;
+		}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 2. 입력 */
+/*======================================================================================================*/
+/*========================================================*/
+/* ※ 2-0. 전체 틀 (입력란) */
+/*========================================================*/
+#frame_input {
+	position:relative;
+	
+	padding:7px 5px;
+	width:100%;
+	height:215px;
+	
+	background:#202020;
+	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+	display:none;
+}
+	#frame_input input:hover, #frame_input input:focus {
+		box-shadow:0 0 3pt 2pt skyblue;
+	}
+	#frame_input button:hover, #frame_input button:focus {
+		box-shadow:0 0 3pt 2pt skyblue;
+	}
+	#frame_input select:hover, #frame_input select:focus {
+		box-shadow:0 0 3pt 2pt skyblue;
+	}
+	/*========================================================*/
+	/* ※ 2-1. 일러스트 표시*/
+	/*========================================================*/
+	.input_image_cover {
+		position:relative;
+		
+		width:170px;
+		height:202px;
+	}
+			#input_image_cover_1 {
+				float:left;
+			}
+			#input_image_cover_2 {
+				float:right;
+			}
+		.input_image {
+			position:relative;
+			overflow:hidden;
+			
+			width:160px;
+			height:192px;
+			
+			background-color:gray;
+			border:5px white outset;
+			border-radius:5px;
+			
+			display:table;
+		}
+				.input_image:after {
+					content:'';
+					
+					position:absolute;
+					top:0px;
+					left:0px;
+					
+					width:100%;
+					width:calc(100% - 2px);
+					height:100%;
+					height:calc(100% - 2px);
+					
+					border:1px black solid;
+				}
+			.input_image_notice {
+				width:100%;
+				height:100%;
+				
+				font-size:20px;
+				text-align:center;
+				vertical-align:middle;
+				line-height:150%;
+				
+				display:table-cell;
+				visibility:hidden;
+			}
+			.input_image_img {
+				position:absolute;
+				top:0px;
+				left:0px;
+				
+				width:100%;
+				height:100%;
+				
+				border-radius:5px;
+				
+				visibility:hidden;
+			}
+	/*========================================================*/
+	/* ※ 2-2. 입력란 */
+	/*========================================================*/
+	#input_box {
+		float:left;
+		
+		margin-left:5px;
+		width:440px;
+		
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+		/*========================================================*/
+		/* ※ 2-2-1. 타이틀 */
+		/*========================================================*/
+		.input_title {
+			float:left;
+			
+			width:220px;
+			height:30px;
+			
+			border:1px white solid;
+			
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;
+			
+			font-size:20px;
+			font-weight:bold;
+			line-height:30px;
+			text-align:center;
+		}
+			#input_title_1 {
+				background:blue;
+			}
+			#input_title_2 {
+				background:red;
+			}
+		/*========================================================*/
+		/* ※ 2-2-2. 일러 & 이름 입력 */
+		/*========================================================*/
+		.input_slot {
+			padding:5px;
+			width:220px;
+			height:97px;
+			
+			background:#404040;
+			border:1px white solid;
+			border-top:0px;
+			
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;
+			
+			font-size:18px;
+		}
+				#input_slot_1 {
+					clear:both;
+					float:left;
+				}
+				#input_slot_2 {
+					float:left;
+				}
+			.input_slot p {
+				margin-bottom:6px;
+				width:100%;
+				
+				display:inline-block;
+			}
+			.input_slot label {
+				margin:0px;
+				width:100%;
+				height:25px;
+				
+				font-size:18px;
+				
+				display:inline-block;
+			}
+			.input_slot hr {
+				margin:0px 0px 6px 0px;
+				
+				border-top:1px white solid;
+				border-bottom:1px white solid;
+			}
+			.input_file {
+				width:100%;
+				
+				border:1px gray solid;
+				
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				box-sizing:border-box;
+			}
+			.input_name {
+				float:right;
+				
+				padding:2px;
+				width:145px;
+				height:21px;
+				
+				border:1px gray solid;
+				
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				box-sizing:border-box;
+				
+				display:block;
+			}
+	/*========================================================*/
+	/* ※ 2-3. 기타 설정 & 실행 */
+	/*========================================================*/
+	#input_other {
+		position:relative;
+		clear:both;
+		float:left;
+		
+		margin-top:12px;
+		padding:4px;
+		width:100%;
+		height:63px;
+		
+		background:#404040;
+		border:1px white solid;
+		border-radius:10px;
+		
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+		#input_option {
+			position:absolute;
+			left:-1px;
+			bottom:-1px;
+			z-index:20;
+			
+			padding:5px;
+			width:210px;
+			height:225px;
+			
+			background:white;
+			border:1px black solid;
+			border-radius:10px;
+			
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;
+			
+			display:none;
+		}
+			#input_option hr {
+				margin-bottom:5px;
+				
+				border-top:1px #202020 dashed;
+				border-bottom:1px #202020 dashed;
+			}
+			.input_option_cover {
+				position:relative;
+				
+				margin-bottom:5px;
+				padding:2px 8px 2px 5px;
+				width:100%;
+				height:25px;
+				
+				background:#A0A0A0;
+				border:1px gray outset;
+				border-radius:5px;
+				
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				box-sizing:border-box;
+				
+				color:black;
+				font-size:15px;
+				font-weight:bold;
+			}
+					.input_option_cover.title {
+						background:#202020;
+						
+						margin-bottom:8px;
+						height:30px;
+						
+						border-radius:0px;
+						
+						color:white;
+						font-size:20px;
+						text-align:center;
+					}
+				#input_option_sound {
+					float:left;
+					
+					width:20px;
+					height:20px;
+					
+					display:block;
+				}
+					#input_option_sound_label {
+						float:left;
+						
+						margin-left:5px;
+						
+						font-size:15px;
+						
+						display:block;
+					}
+					#input_option_sound:hover, #input_option_sound_label:hover {
+						text-decoration:underline;
+						
+						cursor:pointer;
+						cursor:hand;
+					}
+				 #input_option_speed, #input_option_theme {
+					float:right;
+					
+					width:109px;
+					height:19px;
+					
+					border:1px gray solid;
+					
+					font-weight:bold;
+					
+					display:block;
+				}
+				#input_option_random {
+					float:right;
+					
+					width:75px;
+					height:19px;
+					
+					border:1px gray solid;
+					
+					font-weight:bold;
+					
+					display:block;
+				}
+		
+		
+		#input_option_open {
+			position:absolute;
+			top:4px;
+			left:4px;
+			z-index:25;
+			
+			padding:0px 10px;
+			width:198px;
+			height:54px;
+			
+			background: #FFD83E; /* default */
+			background: -moz-linear-gradient(top center, #FFFFFF, #FFD83E);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #FFD83E));
+			background: -ms-linear-gradient(top center, #FFFFFF, #FFD83E);
+			background: linear-gradient(to bottom, #ffffff, #FFD83E);
+			
+			border:1px gray outset;
+			border-radius:10px;
+			
+			font-size:32px;
+			font-weight:bold;
+			line-height:35px;
+		}
+				#input_option_open img {
+					float:left;
+					
+					display:block;
+				}
+				#input_option_open p {
+					width:130px;
+					height:32px;
+					
+					float:right;
+				}
+			#input_option_open:hover {
+				background: #FFD800; /* default */
+				background: -moz-linear-gradient(top center, #FFFFFF, #FFD800);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #FFD800));
+				background: -ms-linear-gradient(top center, #FFFFFF, #FFD800);
+				background: linear-gradient(to bottom, #ffffff, #FFD800);
+				
+				cursor:pointer;
+				cursor:hand;
+			}
+			#input_option_open:active {
+				background: #FFD800;
+			}
+		#input_option_open.close {
+			background: #FF6A00; /* default */
+			background: -moz-linear-gradient(top center, #FFFFFF, #FF6A00);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #FF6A00));
+			background: -ms-linear-gradient(top center, #FFFFFF, #FF6A00);
+			background: linear-gradient(to bottom, #ffffff, #FF6A00);
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#FF6A00)";
+		}
+			#input_option_open.close:hover {
+				cursor:pointer;
+				cursor:hand;
+			}
+			#input_option_open.close:active {
+				background: #FFAA00;
+			}
+		
+		
+		#input_run {
+			float:right;
+			
+			width:198px;
+			height:54px;
+			
+			background: #2B4BFF; /* default */
+			background: -moz-linear-gradient(top center, #FFFFFF, #2B4BFF);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #2B4BFF));
+			background: -ms-linear-gradient(top center, #FFFFFF, #2B4BFF);
+			background: linear-gradient(to bottom, #ffffff, #2B4BFF);
+			
+			border:1px gray outset;
+			border-radius:10px;
+			
+			font-size:35px;
+			font-weight:bold;
+		}
+			#input_run:hover {
+				cursor:pointer;
+				cursor:hand;
+			}
+			#input_run:active {
+				background: #3D5AFF;
+			}
+		#input_run.reset {
+			background: #FF6A00; /* default */
+			background: -moz-linear-gradient(top center, #FFFFFF, #FF6A00);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #FF6A00));
+			background: -ms-linear-gradient(top center, #FFFFFF, #FF6A00);
+			background: linear-gradient(to bottom, #ffffff, #FF6A00);
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#FF6A00)";
+		}
+			#input_run.reset:hover {
+				cursor:pointer;
+				cursor:hand;
+			}
+			#input_run.reset:active {
+				background: #FFAA00;
+			}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 3. 전장 */
+/*======================================================================================================*/
+/*========================================================*/
+/* ※ 3-0. 전체 틀 (전장) */
+/*========================================================*/
+#frame_battle {	
+	position:relative;
+	
+	padding:10px;
+	width:100%;
+	height:401px;
+	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+	background-size:100%;
+	border-bottom:1px white solid;
+}
+	/*========================================================*/
+	/* ※ 3-1. 대문*/
+	/*========================================================*/
+	.battle_gate {
+		position:absolute;
+		z-index:10;
+		
+		width:400px;
+		height:400px;
+		
+		background-color:#202020;
+		background-image:url(http://cfile203.uf.daum.net/image/21786044562204D22E744C);
+	}
+		#battle_gate_1 {
+			top:0px;
+			left:0px;
+		}
+		#battle_gate_2 {
+			top:0px;
+			left:400px;
+			
+			/*이미지 뒤집기*/
+			-moz-transform:scaleX(-1);
+			-o-transform:scaleX(-1);
+			-webkit-transform:scaleX(-1);
+			transform:scaleX(-1);
+			filter:FlipH;
+			-ms-filter:"FlipH";
+		}
+	/*========================================================*/
+	/* ※ 3-ex. 상단*/
+	/*========================================================*/
+	#battle_head {
+		position:absolute;
+		top:10px;
+		left:10px;
+		z-index:2;
+		
+		width:780px;
+		height:40px;
+	}
+	/*========================================================*/
+	/* ※ 3-2. 라이프바*/
+	/*========================================================*/
+	.battle_life {
+		position:absolute;
+		overflow:hidden;
+		
+		width:355px;
+		height:40px;
+		
+		border:2px white solid;
+		
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+			#battle_life_1 {
+				top:0px;
+				right:425px;
+				
+				box-shadow:-2px 2px black;
+			}
+			#battle_life_2 {
+				top:0px;
+				left:425px;
+				
+				box-shadow:2px 2px black;
+			}
+		.battle_life_inline {
+			position:relative;
+			
+			width:100%;
+			height:100%;
+			
+			background:rgba(0,0,0,0.5);
+			border:1px black solid;
+			
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;
+		}
+		.battle_life_bar {
+			position:absolute;
+			
+			width:100%;
+			height:100%;
+			
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ff0000+10,ff3232+90,000000+100 */
+			background: #FFFF00; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwJSIgc3RvcC1jb2xvcj0iI2ZmMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkwJSIgc3RvcC1jb2xvcj0iI2ZmMzIzMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			background: -moz-linear-gradient(top, #ffffff 0%, #FFFF00 10%, #FFFF00 90%, #000000 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(10%,#FFFF00), color-stop(90%,#FFFF00), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* IE10+ */
+			background: linear-gradient(to bottom, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* W3C */
+			
+			color:black;
+		}
+				.battle_life_bar.rage_0 {
+					/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ff0000+10,ff3232+90,000000+100 */
+					background: #FFFF00; /* Old browsers */
+					/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+					background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwJSIgc3RvcC1jb2xvcj0iI2ZmMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkwJSIgc3RvcC1jb2xvcj0iI2ZmMzIzMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+					background: -moz-linear-gradient(top, #ffffff 0%, #FFFF00 10%, #FFFF00 90%, #000000 100%); /* FF3.6+ */
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(10%,#FFFF00), color-stop(90%,#FFFF00), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+					background: -webkit-linear-gradient(top, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* Chrome10+,Safari5.1+ */
+					background: -o-linear-gradient(top, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* Opera 11.10+ */
+					background: -ms-linear-gradient(top, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* IE10+ */
+					background: linear-gradient(to bottom, #ffffff 0%,#FFFF00 10%,#FFFF00 90%,#000000 100%); /* W3C */
+					
+					color:black;
+				}
+				.battle_life_bar.rage_1 {
+					/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ff0000+10,ff3232+90,000000+100 */
+					background: #FFA200; /* Old browsers */
+					/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+					background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwJSIgc3RvcC1jb2xvcj0iI2ZmMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkwJSIgc3RvcC1jb2xvcj0iI2ZmMzIzMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+					background: -moz-linear-gradient(top, #ffffff 0%, #FFA200 10%, #FFA200 90%, #000000 100%); /* FF3.6+ */
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(10%,#FFA200), color-stop(90%,#FFA200), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+					background: -webkit-linear-gradient(top, #ffffff 0%,#FFA200 10%,#FFA200 90%,#000000 100%); /* Chrome10+,Safari5.1+ */
+					background: -o-linear-gradient(top, #ffffff 0%,#FFA200 10%,#FFA200 90%,#000000 100%); /* Opera 11.10+ */
+					background: -ms-linear-gradient(top, #ffffff 0%,#FFA200 10%,#FFA200 90%,#000000 100%); /* IE10+ */
+					background: linear-gradient(to bottom, #ffffff 0%,#FFA200 10%,#FFA200 90%,#000000 100%); /* W3C */
+					
+					color:black;
+				}
+				.battle_life_bar.rage_2 {
+					/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ff0000+10,ff3232+90,000000+100 */
+					background: #FF4F00; /* Old browsers */
+					/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+					background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwJSIgc3RvcC1jb2xvcj0iI2ZmMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkwJSIgc3RvcC1jb2xvcj0iI2ZmMzIzMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+					background: -moz-linear-gradient(top, #ffffff 0%, #FF4F00 10%, #FF4F00 90%, #000000 100%); /* FF3.6+ */
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(10%,#FF4F00), color-stop(90%,#FF4F00), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+					background: -webkit-linear-gradient(top, #ffffff 0%,#FF4F00 10%,#FF4F00 90%,#000000 100%); /* Chrome10+,Safari5.1+ */
+					background: -o-linear-gradient(top, #ffffff 0%,#FF4F00 10%,#FF4F00 90%,#000000 100%); /* Opera 11.10+ */
+					background: -ms-linear-gradient(top, #ffffff 0%,#FF4F00 10%,#FF4F00 90%,#000000 100%); /* IE10+ */
+					background: linear-gradient(to bottom, #ffffff 0%,#FF4F00 10%,#FF4F00 90%,#000000 100%); /* W3C */
+					
+					color:white;
+				}
+				.battle_life_bar.rage_3 {
+					/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ff0000+10,ff3232+90,000000+100 */
+					background: #E60000; /* Old browsers */
+					/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+					background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwJSIgc3RvcC1jb2xvcj0iI2ZmMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkwJSIgc3RvcC1jb2xvcj0iI2ZmMzIzMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+					background: -moz-linear-gradient(top, #ffffff 0%, #E60000 10%, #E60000 90%, #000000 100%); /* FF3.6+ */
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(10%,#E60000), color-stop(90%,#E60000), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+					background: -webkit-linear-gradient(top, #ffffff 0%,#E60000 10%,#E60000 90%,#000000 100%); /* Chrome10+,Safari5.1+ */
+					background: -o-linear-gradient(top, #ffffff 0%,#E60000 10%,#E60000 90%,#000000 100%); /* Opera 11.10+ */
+					background: -ms-linear-gradient(top, #ffffff 0%,#E60000 10%,#E60000 90%,#000000 100%); /* IE10+ */
+					background: linear-gradient(to bottom, #ffffff 0%,#E60000 10%,#E60000 90%,#000000 100%); /* W3C */
+					
+					color:white;
+				}
+			#battle_life_bar_1 {
+				top:0px;
+				right:0px;
+				
+				border-left:1px black solid;
+			}
+			#battle_life_bar_2 {
+				top:0px;
+				left:0px;
+				
+				border-right:1px black solid;
+			}
+		.battle_life_section {
+			position:absolute;
+			top:0px;
+			
+			height:100%;
+		}
+				.battle_life_section.left {
+					border-right:1px black solid;
+				}
+			.battle_life_section.left_1 {
+				left:0%;
+				width:10%;
+			}
+			.battle_life_section.left_2 {
+				left:10%;
+				width:20%;
+			}
+			.battle_life_section.left_3 {
+				left:30%;
+				width:30%;
+			}
+				.battle_life_section.right {
+					border-left:1px black solid;
+				}
+			.battle_life_section.right_1 {
+				right:0%;
+				width:10%;
+			}
+			.battle_life_section.right_2 {
+				right:10%;
+				width:20%;
+			}
+			.battle_life_section.right_3 {
+				right:30%;
+				width:30%;
+			}
+		.battle_life_num {
+			position:absolute;
+			
+			padding:6px 10px;
+			width:100%;
+			height:100%;
+		
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;
+			
+			color:black;
+			font-size:20px;
+			font-weight:bold;
+		}
+				#battle_life_num_1 {
+					text-align:right;
+				}
+				#battle_life_num_2 {
+					text-align:left;
+				}
+			.battle_life_num.rage_0 {
+				color:black;
+			}
+			.battle_life_num.rage_1 {
+				color:black;
+			}
+			.battle_life_num.rage_2 {
+				color:white;
+			}
+			.battle_life_num.rage_3 {
+				color:white;
+			}
+			.battle_life_num.rage_4 {
+				color:white;
+			}
+	#battle_turn	{
+		position:absolute;
+		top:0px;
+		left:360px;
+		
+		padding:0px 6px;
+		width:60px;
+		height:40px;
+		
+		background:rgba(40,40,40,0.7);
+		border:2px white solid;
+		box-shadow:0px 2px black;
+		
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+		
+		font-size:36px;
+		font-weight:bold;
+		text-align:right;
+		line-height:36px;
+	}
+	/*========================================================*/
+	/* ※ 3-3. 캐릭터*/
+	/*========================================================*/
+	.battle_character {
+		position:absolute;
+		z-index:1;
+		
+		width:246px;
+		height:280px;
+		
+		perspective:500px;
+		-webkit-perspective:500px;
+		transform-style:flat;
+	}
+			#battle_character_1 {
+				top:60px;
+				left:80px;
+			}
+			#battle_character_2 {
+				top:60px;
+				left:474px;
+			}
+	
+		/*뒤집기 이펙트 - 시작*/
+		.battle_character.left.flipped .battle_character_front{
+			visibility:hidden;
+		}
+		.battle_character.left.flipped .battle_character_front{
+			-ms-transform:rotateY(180deg);
+			-webkit-transform: rotateY(180deg);
+			-moz-transform:rotateY(180deg);
+			-o-transform:rotateY(180deg);
+			transform: rotateY(180deg);
+		}
+		
+		.battle_character.left.flipped .battle_character_back{
+			visibility:visible;
+		}
+		.battle_character.left.flipped .battle_character_back{
+			-ms-transform:rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+			-moz-transform:rotateY(0deg);
+			-o-transform:rotateY(0deg);
+			transform: rotateY(0deg);
+		}
+		
+		.battle_character.left .battle_character_back{
+			visibility:hidden;
+		}
+		.battle_character.left .battle_character_back{
+			-ms-transform:rotateY(-180deg);
+			-webkit-transform: rotateY(-180deg);
+			-moz-transform:rotateY(-180deg);
+			-o-transform:rotateY(-180deg);
+			transform: rotateY(-180deg);
+		}
+		
+		
+		.battle_character.right.flipped .battle_character_front{
+			visibility:hidden;
+		}
+		.battle_character.right.flipped .battle_character_front{
+			-ms-transform:rotateY(-180deg);
+			-webkit-transform: rotateY(-180deg);
+			-moz-transform:rotateY(-180deg);
+			-o-transform:rotateY(-180deg);
+			transform: rotateY(-180deg);
+		}
+		
+		.battle_character.right.flipped .battle_character_back{
+			visibility:visible;
+		}
+		.battle_character.right.flipped .battle_character_back{
+			-ms-transform:rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+			-moz-transform:rotateY(0deg);
+			-o-transform:rotateY(0deg);
+			transform: rotateY(0deg);
+		}
+		
+		.battle_character.right .battle_character_back{
+			visibility:hidden;
+		}
+		.battle_character.right .battle_character_back{
+			-ms-transform:rotateY(180deg);
+			-webkit-transform: rotateY(180deg);
+			-moz-transform:rotateY(180deg);
+			-o-transform:rotateY(180deg);
+			transform: rotateY(180deg);
+		}
+		/*뒤집기 이펙트 - 끝*/
+	
+		.battle_character_front {
+			position:absolute;
+			top:0px;
+			left:0px;
+			z-index:1;
+			overflow:hidden;
+			
+			width:220px;
+			height:264px;
+			
+			border:8px black solid;
+			border-radius:15px;
+			
+			-ms-transform:rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+			-moz-transform:rotateY(0deg);
+			-o-transform:rotateY(0deg);
+			transform: rotateY(0deg);
+			
+			-ms-transition: 1s;
+			-webkit-transition: 1s;
+			-moz-transition: 1s;
+			-o-transition: 1s;
+			transition: 1s;
+			
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
+		}
+			.battle_image {
+				position:absolute;
+				top:0px;
+				left:0px;
+				
+				width:100%;
+				height:100%;
+				
+				background-color:gray;
+				
+				display:none;
+			}
+			.battle_glass {
+				position:absolute;
+				top:0px;
+				left:0px;
+				
+				width:220px;
+				height:264px;
+				
+				background-image:url(http://img2.ruliweb.daum.net/mypi/gup/a/125/5/o/4919037963.jpg);
+				background-size:883px 264px;
+				background-repeat:no-repeat;
+				
+				visibility:hidden;
+			}
+			.battle_buff {
+				position:absolute;
+				top:0px;
+				left:0px;
+				
+				width:220px;
+				height:264px;
+				
+				background-color:rgba(255,00,00,0.7);
+				background-image:url(http://cfile216.uf.daum.net/image/2212B642562204DB1A7CAA);
+				background-position:10px 16px;
+				background-repeat:no-repeat;
+				
+				opacity:0;
+			}
+				.battle_buff p {
+					margin-top:10px;
+					
+					font-size:80px;
+					font-weight:bold;
+					font-style:italic;
+					text-align:left;
+				}
+			
+			
+			.battle_character_first{
+				position:absolute;
+				left:0px;
+				top:10px;
+				
+				width:100%;
+				height:80px;
+				
+				color:white;
+				text-shadow:
+					-2px 0px black,
+					-2px -2px black,
+					0px -2px black,
+					2px -2px black,
+					2px 0px 3px black,
+					2px 2px 3px black,
+					0px 2px 3px black,
+					-2px 2px black;
+				font-size:80px;
+				font-weight:bold;
+				text-align:center;
+				
+				display:none;
+			}
+			.battle_character_random{
+				position:absolute;
+				left:0px;
+				top:90px;
+				
+				width:100%;
+				height:20px;
+				
+				color:white;
+				text-shadow:
+					-2px 0px black,
+					-2px -2px black,
+					0px -2px black,
+					2px -2px black,
+					2px 0px 3px black,
+					2px 2px 3px black,
+					0px 2px 3px black,
+					-2px 2px black;
+				font-size:18px;
+				font-weight:bold;
+				text-align:center;
+				
+				display:none;
+			}
+			.battle_character_info_text{
+				position:absolute;
+				left:0px;
+				bottom:100px;
+				
+				width:100%;
+				height:20px;
+				
+				color:white;
+				text-shadow:
+					-2px 0px black,
+					-2px -2px black,
+					0px -2px black,
+					2px -2px black,
+					2px 0px 3px black,
+					2px 2px 3px black,
+					0px 2px 3px black,
+					-2px 2px black;
+				font-size:20px;
+				font-weight:bold;
+				font-style:italic;
+				text-align:center;
+				
+				display:none;
+			}
+			.battle_character_info_num {
+				overflow:hidden;
+				position:absolute;
+				left:0px;
+				bottom:45px;
+				
+				width:100%;
+				height:55px;
+				
+				color:#F5CB5E;
+				text-shadow:
+					-2px 0px black,
+					-2px -2px black,
+					0px -2px black,
+					2px -2px black,
+					2px 0px 3px black,
+					2px 2px 3px black,
+					0px 2px 3px black,
+					-2px 2px black;
+				font-size:50px;
+				font-weight:bold;
+				font-style:italic;
+				text-align:center;
+				
+				display:none;
+			}
+			.battle_name {
+				overflow:hidden;
+				position:absolute;
+				left:0px;
+				bottom:0px;
+				
+				width:100%;
+				height:40px;
+				
+				background:rgba(0,0,0,0.6);
+				
+				font-size:20px;
+				font-weight:bold;
+				text-align:center;
+				line-height:40px;
+				white-space:nowrap;
+			}
+		.battle_character_back {
+			position:absolute;
+			top:0px;
+			left:0px;
+			z-index:1;
+			overflow:hidden;
+			
+			width:220px;
+			height:264px;
+			
+			background:url(http://cfile220.uf.daum.net/image/242D453856220669290CE9);
+			border:8px white outset;
+			border-radius:15px;
+			
+			-ms-transform:rotateY(0deg);
+			-webkit-transform: rotateY(0deg);
+			-moz-transform:rotateY(0deg);
+			-o-transform:rotateY(0deg);
+			transform: rotateY(-180deg);
+			
+			-ms-transition: 1s;
+			-webkit-transition: 1s;
+			-moz-transition: 1s;
+			-o-transition: 1s;
+			transition: 1s;
+			
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
+		}
+	/*========================================================*/
+	/* ※ 3-4. 각종 이펙트*/
+	/*========================================================*/
+	.battle_effect {
+		position:absolute;
+		z-index:2;
+		
+		width:234px;
+		height:280px;
+	}
+			#battle_effect_1 {
+				top:60px;
+				left:80px;
+			}
+			#battle_effect_2 {
+				top:60px;
+				left:474px;
+			}
+		/*========================================================*/
+		/* ※ 3-4-1. 타격 이펙트*/
+		/*========================================================*/
+		.battle_effect_hit {
+			position:absolute;
+			top:50px;
+			
+			width:194px;
+			height:180px;
+			
+			background-image:url(http://cfile223.uf.daum.net/image/2209AB42562204DE23D6E3);
+			background-size:584px 180px;
+			background-repeat:repeat-x;
+			
+			display:none;
+		}
+				.battle_effect_hit.side_1 {
+					right:-45px;
+					
+					/*이미지 뒤집기*/
+					-moz-transform:scaleX(-1);
+					-o-transform:scaleX(-1);
+					-webkit-transform:scaleX(-1);
+					transform:scaleX(-1);
+					filter:FlipH;
+					-ms-filter:"FlipH";
+				}
+				.battle_effect_hit.side_2 {
+					left:-45px;
+				}
+			.battle_effect_hit.rage_0 {
+				top:50px;
+				
+				width:194px;
+				height:180px;
+				
+				background-image:url(http://cfile223.uf.daum.net/image/2209AB42562204DE23D6E3);
+				background-size:584px 180px;
+			}
+			.battle_effect_hit.rage_1 {
+				top:35px;
+				
+				width:225px;
+				height:210px;
+				
+				background-image:url(http://cfile228.uf.daum.net/image/245BC63F562204DF13A38D);
+				background-size:677px 210px;
+			}
+			.battle_effect_hit.rage_2 {
+				top:20px;
+				
+				width:256px;
+				height:240px;
+				
+				background-image:url(http://img2.ruliweb.daum.net/mypi/gup/a/125/5/o/4919037950.jpg);
+				background-size:770px 240px;
+			}
+			.battle_effect_hit.rage_3 {
+				top:5px;
+				
+				width:286px;
+				height:270px;
+				
+				background-image:url(http://img2.ruliweb.daum.net/mypi/gup/a/125/5/o/4919037951.jpg);
+				background-size:860px 270px;
+			}
+		/*========================================================*/
+		/* ※ 3-4-2. 유리 조각*/
+		/*========================================================*/
+		.battle_effect_particle {
+			position:absolute;
+			top:-77px;
+			
+			width:336px;
+			height:418px;
+			
+			background-image:url(http://img2.ruliweb.daum.net/mypi/gup/a/125/5/o/4919037952.jpg);
+			background-size:1684px 418px;
+			background-position:0px 0px;
+			background-repeat:repeat-x;
+			
+			display:none;
+		}
+				#battle_effect_particle_1 {
+					left:-40px;
+				}
+				#battle_effect_particle_2 {
+					right:-40px;
+					
+					/*이미지 뒤집기*/
+					-moz-transform:scaleX(-1);
+					-o-transform:scaleX(-1);
+					-webkit-transform:scaleX(-1);
+					transform:scaleX(-1);
+					filter:FlipH;
+					-ms-filter:"FlipH";
+				}
+		/*========================================================*/
+		/* ※ 3-4-3. 대미지*/
+		/*========================================================*/
+		.battle_damage {
+			position:absolute;
+			bottom:214px;
+			
+			width:100%;
+			height:50px;
+			
+			color:#F5CB5E;
+			text-shadow:
+				-2px 0px black,
+				-2px -2px black,
+				0px -2px black,
+				2px -2px black,
+				2px 0px 3px black,
+				2px 2px 3px black,
+				0px 2px 3px black,
+				-2px 2px black;
+			font-size:50px;
+			font-weight:bold;
+			font-style:italic;
+			text-align:center;
+			
+			display:none;
+		}
+			.battle_damage.appear {
+				color:white;
+				text-shadow:
+					-2px 0px white,
+					-2px -2px white,
+					0px -2px white,
+					2px -2px white,
+					2px 0px 3px white,
+					2px 2px 3px white,
+					0px 2px 3px white,
+					-2px 2px white;
+			}
+			.battle_damage.critical {
+				left:-50%;
+				
+				width:200%;
+				height:90px;
+				
+				color:orange;
+				font-size:90px;
+				
+				display:inline-block;
+			}
+		.battle_effect_critical {
+			position:absolute;
+			top:80px;
+			
+			width:100%;
+			height:37px;
+			
+			background-image:url(http://cfile240.uf.daum.net/image/2104D544562204D3254D31);
+			background-position:10px 0px;
+			background-repeat:no-repeat;
+			
+			display:none;
+		}
+			.battle_effect_critical.appear {
+				background-image:url(http://cfile227.uf.daum.net/image/2305A944562204D4240206);
+			}
+	/*========================================================*/
+	/* ※ 3-5. 전투 상태 신호*/
+	/*========================================================*/
+	#battle_sign_ready {
+		position:absolute;
+		top:90px;
+		left:225px;
+		z-index:5;
+		
+		width:350px;
+		height:75px;
+		
+		background-image:url(http://cfile202.uf.daum.net/image/261D4F42562204DB11303A);
+		background-size:350px 75px;
+		background-repeat:no-repeat;
+		
+		display:none;
+	}
+	#battle_sign_fight {
+		position:absolute;
+		top:90px;
+		left:225px;
+		z-index:5;
+		
+		width:350px;
+		height:75px;
+		
+		background-image:url(http://cfile221.uf.daum.net/image/2707E742562204DA203C4C);
+		background-size:350px 75px;
+		background-repeat:no-repeat;
+		
+		display:none;
+	}
+	#battle_sign_timeover {
+		position:absolute;
+		top:90px;
+		left:125px;
+		z-index:5;
+		
+		width:550px;
+		height:75px;
+		
+		background-image:url(http://cfile211.uf.daum.net/image/24780542562204DC327892);
+		background-size:550px 75px;
+		background-repeat:no-repeat;
+		
+		display:none;
+	}
+	#battle_sign_draw {
+		position:absolute;
+		top:90px;
+		left:115px;
+		z-index:5;
+		
+		width:570px;
+		height:75px;
+		
+		background-image:url(http://cfile215.uf.daum.net/image/251B0D42562204D91333A2);
+		background-size:570px 75px;
+		background-repeat:no-repeat;
+		
+		display:none;
+	}
+	.battle_sign_win {
+		position:absolute;
+		z-index:5;
+		
+		width:360px;
+		height:67px;
+		
+		background-image:url(http://cfile211.uf.daum.net/image/217B6F42562204DD30D539);
+		background-repeat:no-repeat;
+		
+		display:none;
+	}
+		#battle_sign_win_1 {
+			top:70px;
+			left:18px;
+		}
+		#battle_sign_win_2 {
+			top:70px;
+			right:18px;
+		}
+	/*========================================================*/
+	/* ※ 3-6. 분노 단계*/
+	/*========================================================*/
+	.battle_stat_rage {
+		position:absolute;
+		z-index:2;
+		
+		width:30px;
+		height:40px;
+		
+		background:#404040;
+		background:rgba(40,40,40,1);
+		border:2px white solid;
+		
+		font-size:35px;
+		font-weight:bold;
+		text-align:center;
+		line-height:40px;
+	}
+		#battle_stat_rage_1 {
+			bottom:8px;
+			left:10px;
+			
+			box-shadow:-2px 2px black;
+		}
+		#battle_stat_rage_2 {
+			bottom:8px;
+			right:10px;
+			
+			box-shadow:2px 2px black;
+		}
+	/*========================================================*/
+	/* ※ 3-7. 공격력*/
+	/*========================================================*/
+	.battle_stat_atk_cover {
+		position:absolute;
+		z-index:2;
+		
+		padding:0px 10px;
+		width:170px;
+		height:44px;
+		
+		
+		color:yellow;
+		font-size:35px;
+		font-weight:bold;
+		text-align:center;
+		line-height:40px;
+	}
+		#battle_stat_atk_cover_1 {
+			bottom:8px;
+			left:42px;
+			
+			text-align:left;
+		}
+			#battle_stat_atk_cover_1:before {
+				content: '';
+				
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				z-index: -1;
+				
+				width: 100%;
+				height: 16px;
+				
+				background:#404040;
+				background:rgba(40,40,40,0.7);
+				border-top:2px white solid;
+				border-right:2px white solid;
+				
+				transform: skewX(40deg);
+				-ms-transform: skewX(40deg);
+				transform-origin: right bottom;
+			}
+			#battle_stat_atk_cover_1:after {
+				content: '';
+				
+				position: absolute;
+				left: 0px;
+				bottom: 0px;
+				z-index: -1;
+				
+				width:178px;
+				height:24px;
+				
+				background:#404040;
+				background:rgba(40,40,40,0.7);
+				border-bottom:2px white solid;
+				box-shadow:-2px 2px black;
+			}
+			#battle_stat_atk_cover_1 img {
+				float:left;
+				
+				margin-top:8px;
+				margin-right:10px;
+				
+				display:block;
+			}
+		
+		#battle_stat_atk_cover_2 {
+			bottom:8px;
+			right:42px;
+			
+			text-align:right;
+		}
+			#battle_stat_atk_cover_2:before {
+				content: '';
+				
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				z-index: -1;
+				
+				width: 100%;
+				height: 16px;
+				
+				background:#404040;
+				background:rgba(40,40,40,0.7);
+				border-top:2px white solid;
+				border-left:2px white solid;
+				
+				transform:skewX(-40deg);
+				-ms-transform:skewX(-40deg);
+				transform-origin:left bottom;
+			}
+			#battle_stat_atk_cover_2:after {
+				content: '';
+				
+				position:absolute;
+				right:0px;
+				bottom:0px;
+				z-index:-1;
+				
+				width:178px;
+				height:24px;
+				
+				background:#404040;
+				background:rgba(40,40,40,0.7);
+				border-bottom:2px white solid;
+				box-shadow:2px 2px black;
+			}
+			#battle_stat_atk_cover_2 img {
+				float:right;
+				
+				margin-top:8px;
+				margin-left:10px;
+				
+				display:block;
+				
+				/*이미지 뒤집기*/
+				-moz-transform:scaleX(-1);
+				-o-transform:scaleX(-1);
+				-webkit-transform:scaleX(-1);
+				transform:scaleX(-1);
+				filter:FlipH;
+				-ms-filter:"FlipH";
+			}
+	/*========================================================*/
+	/* ※ 3-8. 방어력*/
+	/*========================================================*/
+	.battle_stat_def_cover {
+		position:absolute;
+		z-index:3;
+		
+		padding:0px 5px;
+		width:90px;
+		height:25px;
+		
+		background:#404040;
+		background:rgba(40,40,40,0.7);
+		border:2px white solid;
+		
+		color:skyblue;
+		font-size:20px;
+		font-weight:bold;
+		text-align:center;
+		line-height:25px;
+	}
+		#battle_stat_def_cover_1 {
+			bottom:5px;
+			left:220px;
+			
+			box-shadow:-2px 2px black;
+			
+			text-align:left;
+		}
+			#battle_stat_def_cover_1 img {
+				float:left;
+				
+				margin-top:5px;
+				margin-right:6px;
+				
+				display:block;
+			}
+		#battle_stat_def_cover_2 {
+			bottom:5px;
+			right:220px;
+			
+			box-shadow:2px 2px black;
+			
+			text-align:right;
+		}
+			#battle_stat_def_cover_2 img {
+				float:right;
+				
+				margin-top:5px;
+				margin-left:6px;
+				
+				display:block;
+			}
+	/*========================================================*/
+	/* ※ 3-9. 크리티컬*/
+	/*========================================================*/
+	.battle_critical {
+		position:absolute;
+		z-index:2;
+		
+		width:40px;
+		height:250px;/*150 ~ 275*/
+		
+		border:2px white solid;
+	}
+				#battle_critical_1 {
+					bottom:60px;
+					left:10px;
+					
+					box-shadow:-2px 2px black;
+				}
+				#battle_critical_2 {
+					bottom:60px;
+					right:10px;
+					
+					box-shadow:2px 2px black;
+				}
+		.battle_critical hr {
+			border-top:1px white solid;
+			border-bottom:1px white solid;
+		}
+		
+		.battle_critical_title {
+			position:relative;
+			
+			padding:1px;
+			width:36px;
+			height:16px;
+			
+			background:orange;
+			border:1px black solid;
+			
+			color:black;
+			font-size:12px;
+			font-weight:bold;
+			text-align:center;
+			line-height:16px;
+		}
+		.battle_critical_progress {
+			position:relative;
+			
+			width:38px;
+			height:calc(100% - 48px);
+			
+			background:rgba(40,40,40,0.8);
+			border:1px black solid;
+		}
+			.battle_critical_bar {
+				position:absolute;
+				left:0px;
+				bottom:0px;
+				
+				width:100%;
+				height:0%;
+				
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,FF6A00+20,FF6A00+80,000000+100 */
+				background: #ffffff; /* Old browsers */
+				background: -moz-linear-gradient(left, #ffffff 0%, #FF6A00 20%, #FF6A00 80%, #000000 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffffff), color-stop(20%,#FF6A00), color-stop(80%,#FF6A00), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(left, #ffffff 0%,#FF6A00 20%,#FF6A00 80%,#000000 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(left, #ffffff 0%,#FF6A00 20%,#FF6A00 80%,#000000 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(left, #ffffff 0%,#FF6A00 20%,#FF6A00 80%,#000000 100%); /* IE10+ */
+				background: linear-gradient(to right, #ffffff 0%,#FF6A00 20%,#FF6A00 80%,#000000 100%); /* W3C */
+
+				border-top:1px black solid;
+			}
+			.battle_critical_bar.max {
+				position:absolute;
+				left:0px;
+				bottom:0px;
+				
+				width:100%;
+				height:0%;
+				
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ff0000+20,ff0000+80,000000+100 */
+				background: #ffffff; /* Old browsers */
+				background: -moz-linear-gradient(left, #ffffff 0%, #ff0000 20%, #ff0000 80%, #000000 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffffff), color-stop(20%,#ff0000), color-stop(80%,#ff0000), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(left, #ffffff 0%,#ff0000 20%,#ff0000 80%,#000000 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(left, #ffffff 0%,#ff0000 20%,#ff0000 80%,#000000 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(left, #ffffff 0%,#ff0000 20%,#ff0000 80%,#000000 100%); /* IE10+ */
+				background: linear-gradient(to right, #ffffff 0%,#ff0000 20%,#ff0000 80%,#000000 100%); /* W3C */
+
+				border-top:1px black solid;
+			}
+		.battle_critical_damage {
+			width:38px;
+			height:20px;
+			
+			background:rgba(0,0,0,0.8);
+			border:1px black solid;
+			
+			color:#F5CB5E;
+			font-size:15px;
+			font-weight:bold;
+			text-align:center;
+			line-height:20px;
+		}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 4. 능력치 */
+/*======================================================================================================*/
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 5. 하단 */
+/*======================================================================================================*/
+#frame_footer {
+	position:relative;
+	
+	padding:5px;
+	width:100%;
+	height:28px;
+	
+	border-top:1px white solid;
+	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+	color:white;
+	font-size:15px;
+	text-align:right;
+}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*======================================================================================================*/
+/* ※ 6. 기타 */
+/*======================================================================================================*/
+#imagePreloader {
+	width:1px;
+	height:1px;
+	
+	display:none;
+}
+/**/
+
+
+
+
+
+
+
+
+
+
+/*모바일 스크롤바 가시화*/
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 12px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff; 
+}
