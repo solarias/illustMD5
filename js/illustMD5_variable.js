@@ -13,7 +13,7 @@ var game = {
 		get real_FPS () {//변형된 FPS (게임속도 * FPS)
 			return this["FPS"] * this["speed"];
 		},
-	turn_set : 40,//전투 턴 (세팅)
+	turn_set : 30,//전투 턴 (세팅)
 	turn_remain : 0,//전투 턴 (남음)
 	upload : [//각 플레이어 업로드 여부
 		"",//더미
