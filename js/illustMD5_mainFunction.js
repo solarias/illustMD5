@@ -1123,7 +1123,7 @@
 								//b. 다음 스텝
 								auto["event"] = requestTimeout(function() {
 									battle_finish(shot, hit, 1, step + 1);
-								}, (1000/game["real_FPS"]) * 6 );
+								}, (1000/game["real_FPS"]) * 9 );
 
 								break;
 							//step 10
