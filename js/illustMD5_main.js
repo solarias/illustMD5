@@ -32,18 +32,18 @@ function preload() {
 			if (track_sfx.hasOwnProperty(property) && typeof track_sfx[property] == "string") {
 				//A-1. soundList - track에 등록된 음악 '이름'으로 property 개설
 				soundList[property] = [];
-				
+
 				//A-2. soundList - 각 property에 sameAudio 개수만큼 음악 주소를 new Audio로 등록함
 				for (var i = 0; i < sameAudio ; i++) {
 					soundList[property].push( new Audio(track_sfx[property]) );
 				}
-				
+
 				//A-3. soundList - track에 등록된 음악마다 '0'을 등록
 				playList[property] = 0;
 			}
 		}
 	} catch(e) {}
-	
+
 	//B. 선로드 - 이미지
 		//B-1. 배경화면
 		/*imageList.push("./images/background/seatrain.jpg");*/
@@ -63,10 +63,10 @@ function preload() {
 		imageList.push("http://cfile202.uf.daum.net/image/261D4F42562204DB11303A");
 		/*imageList.push("./images/sign_fight.png");*/
 		imageList.push("http://cfile221.uf.daum.net/image/2707E742562204DA203C4C");
-		
+
 		/*imageList.push("./images/sign_rage.png");*/
 		imageList.push("http://cfile216.uf.daum.net/image/2212B642562204DB1A7CAA");
-		
+
 		/*imageList.push("./images/sign_timeover.png");*/
 		imageList.push("http://cfile211.uf.daum.net/image/24780542562204DC327892");
 		/*imageList.push("./images/sign_win.png");*/
@@ -75,13 +75,13 @@ function preload() {
 		imageList.push("http://cfile215.uf.daum.net/image/251B0D42562204D91333A2");
 		//B-3. 이펙트
 		/*imageList.push("./images/sprite_effect_hit_0.png");*/
-		imageList.push("http://cfile223.uf.daum.net/image/2209AB42562204DE23D6E3");
+		imageList.push("./images/sprite_effect_hit_0.png");
 		/*imageList.push("./images/sprite_effect_hit_1.png");*/
-		imageList.push("http://cfile228.uf.daum.net/image/245BC63F562204DF13A38D");
+		imageList.push("./images/sprite_effect_hit_1.png");
 		/*imageList.push("./images/sprite_effect_hit_2.png");*/
-		imageList.push("http://img2.ruliweb.daum.net/mypi/gup/a/125/5/o/4919037950.jpg");
+		imageList.push("./images/sprite_effect_hit_2.png");
 		/*imageList.push("./images/sprite_effect_hit_3.png");*/
-		imageList.push("http://img2.ruliweb.daum.net/mypi/gup/a/125/5/o/4919037951.jpg");
+		imageList.push("./images/sprite_effect_hit_3.png");
 		/*imageList.push("./images/sprite_effect_particle.png");*/
 		imageList.push("http://img2.ruliweb.daum.net/mypi/gup/a/125/5/o/4919037952.jpg");
 		/*imageList.push("./images/sprite_glass.png");*/
@@ -102,10 +102,10 @@ function preload() {
 		imageList.push("http://cfile220.uf.daum.net/image/242D453856220669290CE9");
 		/*imageList.push("./images/door.jpg");*/
 		imageList.push("http://cfile203.uf.daum.net/image/21786044562204D22E744C");
-	
+
 	//C. 선로드 개시
 	loadImages(imageList,function() {
-		
+
 		//D. 창 전환
 			//D-1. 로딩 창 제거
 			$("#frame_loading").style.display = "none";
@@ -113,7 +113,7 @@ function preload() {
 			$("#frame_input").style.display = "block";
 		//E. 실행
 		main();
-		
+
 	});
 }
 /**/
@@ -136,7 +136,7 @@ function main() {
 			}
 		}(num));
 	}
-	
+
 	//옵션 버튼
 	$("#input_option_open").onclick = function() {
 		if (!hasClass($("#input_option_open"),"close")) {
@@ -155,12 +155,12 @@ function main() {
 			$("#input_option").style.display = "none";
 		}
 	}
-	
+
 	//게임 실행 버튼
 	$("#input_run").onclick = function() {
 		run();
 	}
-	
+
 }
 
 //게임 실행 함수
@@ -222,10 +222,10 @@ function run() {
 			$("#input_run").onclick = function() {
 				battle_end();
 			}
-	
+
 	//3. 도움말 제거
 	$("#frame_help").style.display = "none";
-	
+
 	//3. 실행
 	battle_ready("open", null, 0);
 }

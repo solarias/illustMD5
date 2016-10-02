@@ -20,7 +20,7 @@ var game = {
 		0,//플레이어 1
 		0//플레이어 2
 	],
-	
+
 	//전투 관련 정보
 	rage : [//분노 단계별 발동 조건 ("%")
 		100,//초기
@@ -35,28 +35,28 @@ var game = {
 				return this["life_max"] - this["life_min"];
 			},
 		life_unit : 100,
-		
+
 		atk_max : 2000,
 		atk_min : 500,
 			get atk_gap () {
 				return this["atk_max"] - this["atk_min"];
 			},
 		atk_unit : 10,
-		
+
 		def_max : 1000,
 		def_min : 0,
 			get def_gap () {
 				return this["def_max"] - this["def_min"];
 			},
 		def_unit : 10,
-		
+
 		critical_max : 220,// - 48 = 227 / 220 + 48 = 268
 		critical_min : 80,// - 48 = 52 / 80 + 48 = 128
 			get critical_gap () {
 				return this["critical_max"] - this["critical_min"];
 			},
 		critical_unit : 5,
-		
+
 		critical_damage_max : 2.5,
 		critical_damage_min : 1.5,
 			get critical_damage_gap () {
@@ -64,8 +64,8 @@ var game = {
 			},
 		critical_damage_unit : 0.1
 	},
-	
-	
+
+
 	//게임 상태
 	end : 0// 1이 되면 게임이 끝남을 의미
 }
@@ -92,7 +92,7 @@ var player = [
 		atk_now : 0,//현재 공격력
 		def_now : 0,//현재 방어력
 		critical_now : 0,//현재 크리티컬 게이지
-		
+
 		life_real : 0,//실시간 체력
 		atk_real : 0,//실시간 공격력
 		def_real : 0,//실시간 방어력
@@ -121,7 +121,7 @@ var player = [
 		atk_now : 0,//현재 공격력
 		def_now : 0,//현재 방어력
 		critical_now : 0,//현재 크리티컬 게이지
-		
+
 		life_real : 0,//실시간 체력
 		atk_real : 0,//실시간 공격력
 		def_real : 0,//실시간 방어력
@@ -140,6 +140,7 @@ var auto = {
 	//게임 상태
 	event : null,
 	end : null,//이벤트 종료시에만 작동
+	shake:null,//흔들림
 	//플레이어 상태
 	player : [
 		{},//더미
@@ -219,26 +220,30 @@ var imageList = [];
 	var track_sfx = {
 		ready : "http://cfile222.uf.daum.net/attach/22756F43562211861F05BA",
 		fight : "http://cfile232.uf.daum.net/attach/2705A6435622118112486C",
-		
-		hit : "http://cfile232.uf.daum.net/attach/2268B44356221181291F32",
+
+		hit0:"./sound/sfx/hs_attack_small.mp3",
+		hit1 : "http://cfile232.uf.daum.net/attach/2268B44356221181291F32",
+		hit2:"./sound/sfx/hs_attack_middle.mp3",
+		hit3:"./sound/sfx/hs_attack_large.mp3",
+
 		critical : "http://cfile223.uf.daum.net/attach/2303ED435622117F140B49",
 		particle : "http://cfile207.uf.daum.net/attach/23632C43562211832E6A5B",
 		rage : "http://cfile209.uf.daum.net/attach/21125D4356221185078C44",
-		
+
 		loose : "http://cfile231.uf.daum.net/attach/2570B6435622118222D81D",
 		victory : "http://cfile205.uf.daum.net/attach/22079A4356221187105391",
-		
+
 		close : "http://cfile219.uf.daum.net/attach/257AC4435622117E1B4814"
-	}
-	
-	
+	};
+
+
 	//음악 실행용 변수
 	var audio_bgm;
 	try {
 		audio_bgm = new Audio("http://cfile231.uf.daum.net/attach/257F5B4556220C6F2E3D4E");//배경음악 - 한 번에 하나씩
 	} catch(e) {}
 	//효과음 - 한 번에 여러개 (soundList에서 관리)
-	
+
 	//사운드 이펙트 동시실행 관리
 	var sameAudio = 7;//한 번에 동시재생 가능한 음악 개수 (sfx 한정)
 	var soundList = {};//음악 저장소 (sameAudio 수치만큼 같은 음악들이 들어있음)

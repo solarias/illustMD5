@@ -9,22 +9,22 @@
 			//1. 일러스트 감추기 & 대기 메세지 출력
 			$("#input_image_img_" + num.toString()).style.visibility = "hidden";
 			$("#input_image_notice_" + num.toString()).style.visibility = "visible";
-			
+
 			var file = $("#input_file_" + num.toString()).files[0];
 			var imageType = /image.*/;
-			
+
 			if (file.type.match(imageType)) {
 				var reader = new FileReader();
-				
+
 				reader.onload = function() {
-					
+
 					//2. 캐릭터 설정
 					setCharacter(num, reader.result)
 				}
-				reader.readAsDataURL(file); 
+				reader.readAsDataURL(file);
 			} else {
 				alert("※ 경고 : 지원되지 않는 파일입니다.");
-				
+
 				//3. 대기 메세지 감추기 & 일러스트 출력
 				$("#input_image_notice_" + num.toString()).style.visibility = "hidden";
 				$("#input_image_img_" + num.toString()).style.visibility = "visible";
@@ -36,53 +36,53 @@
 			//2. 일러스트 교체
 			$("#input_image_img_" + num.toString()).src = source;
 			$("#battle_image_" + num.toString()).src = source;
-			
+
 			//3. MD5 문자열 추출 & 저장
 			var code = md5(source.split(",")[1]);
 			player[num]["code"] = code;
-			
+
 			//4. 초기 능력치 산출
 			//체력
 			player[num]["life_init"]
 				= Math.floor(parseInt(code[0] + code[1], 16) / ( 255 / (game["stat"]["life_gap"]/game["stat"]["life_unit"]) ) ) * game["stat"]["life_unit"] + game["stat"]["life_min"];
-			
+
 			//공격력
 			player[num]["atk_init"]
 				= Math.floor(parseInt(code[2] + code[3], 16) /  ( 255 / (game["stat"]["atk_gap"]/game["stat"]["atk_unit"]) ) ) * game["stat"]["atk_unit"] + game["stat"]["atk_min"];
 				//분노 증가 공격력 - 공격력의 1/2 (최소단위는 유지)
 				player[num]["atk_rage"]
 					= Math.floor(parseInt(code[4] + code[5], 16) /  ( 255 / ( (game["stat"]["atk_gap"] / 2) / game["stat"]["atk_unit"] ) ) ) * game["stat"]["atk_unit"] + (game["stat"]["atk_min"]/2);
-			
+
 			//방어력
 			player[num]["def_init"]
 				= Math.floor(parseInt(code[6] + code[7], 16) /  ( 255 / (game["stat"]["def_gap"] / game["stat"]["def_unit"]) ) ) * game["stat"]["def_unit"] + game["stat"]["def_min"];
 				//분노 증가 방어력 - 방어력의 1/2 (최소단위는 유지)
 				player[num]["def_rage"]
 					= Math.floor(parseInt(code[8] + code[9], 16) /  ( 255 / ( ((game["stat"]["def_gap"])/2) / game["stat"]["def_unit"] ) ) ) * game["stat"]["def_unit"] + (game["stat"]["def_min"]/2);
-			
+
 			//최대 크리티컬 게이지
 			player[num]["critical_init"]
 				= Math.floor(parseInt(code[10] + code[11], 16) /  ( 255 / (game["stat"]["critical_gap"] / game["stat"]["critical_unit"]) ) ) * game["stat"]["critical_unit"] + game["stat"]["critical_min"];
 				//크리티컬 대미지
 				player[num]["critical_damage"]
 					= Math.floor(parseInt(code[14] + code[15], 16) /  ( 255 / (game["stat"]["critical_damage_gap"] / game["stat"]["critical_damage_unit"]) ) ) * game["stat"]["critical_damage_unit"] + game["stat"]["critical_damage_min"];
-				
+
 			//속도
 			player[num]["spd"]
 				= Math.floor(parseInt(code[16] + code[17], 16) / 2.55);
-			
+
 			//4. 기타 능력치 변경
 			player[num]["life_now"] = player[num]["life_init"];
 			player[num]["atk_now"] = player[num]["atk_init"];
 			player[num]["def_now"] = player[num]["def_init"];
 			player[num]["critical_now"] = 0;
-			
+
 			player[num]["life_real"] = player[num]["life_init"];
 			player[num]["atk_real"] = player[num]["atk_init"];
 			player[num]["def_real"] = player[num]["def_init"];
 			player[num]["critical_real"] = 0;
-			
-			
+
+
 			//5. 능력치 수치 출력
 				//5-1. 체력
 				$("#battle_life_num_" + num.toString()).innerHTML = thousand(player[num]["life_real"]);;
@@ -102,32 +102,32 @@
 					if (player[num]["critical_damage"].toString().length == 1) {
 						$("#battle_critical_damage_" + num.toString()).innerHTML += ".0";
 					}
-				
-			
+
+
 			//6. 대기 메세지 감추기 & 일러스트 출력
 			$("#input_image_notice_" + num.toString()).style.visibility = "hidden";
 			$("#input_image_img_" + num.toString()).style.visibility = "visible";
 			$("#battle_image_" + num.toString()).style.display = "block";
-			
+
 			//7. 업로드 변수 (0이면) 1로 조절
 			if (game["upload"][num] <= 0) {
 				game["upload"][num] = 1;
 			}
-			
+
 			//8. (이미지 둘 다 올렸으면) 시작 버튼 활성화
 			if (game["upload"][1] >= 1 && game["upload"][2] >= 1) {
 				$("#input_run").disabled = "";
 			}
 		}
 		/**/
-		
-		
+
+
 		//=================================================================================================================
 		//※ 2. 전투 세팅
 		//=================================================================================================================
 		//전투 세팅
 		function battle_ready(phase, first, step) {
-			
+
 			switch (phase) {
 				case "open":
 					//1. Step 0
@@ -143,27 +143,27 @@
 						switch (game["theme"]) {
 							case "seatrain":
 								$("#frame_battle").style.backgroundImage = "url(http://cfile220.uf.daum.net/image/225CD83E562204AD04325D)"
-								
+
 								break;
 							case "street":
 								$("#frame_battle").style.backgroundImage = "url(http://cfile205.uf.daum.net/image/222F523E562204AF2E959C)"
-								
+
 								break;
 							case "tower":
 								$("#frame_battle").style.backgroundImage = "url(http://cfile216.uf.daum.net/image/2536753E562204B02651B9)"
-								
+
 								break;
 							case "night":
 								$("#frame_battle").style.backgroundImage = "url(http://cfile225.uf.daum.net/image/235E003E562204AD03A589)"
-								
+
 								break;
 							case "forest":
 								$("#frame_battle").style.backgroundImage = "url(http://cfile216.uf.daum.net/image/2523F43E562204AC3541A1)"
-								
+
 								break;
 							case "bakal":
 								$("#frame_battle").style.backgroundImage = "url(http://cfile214.uf.daum.net/image/212D153E562204AA2EE15B)"
-								
+
 								break;
 						}
 						//1-2. 턴 제한 표시
@@ -174,7 +174,7 @@
 						//1-3. 문 여는 BGM
 						bgm("gate");
 					}
-					
+
 					//2. 문 열기
 					if (step < 400) {
 						$("#battle_gate_1").style.left = ($("#battle_gate_1").offsetLeft - 10).toString() + "px";
@@ -186,37 +186,37 @@
 					} else {
 						battle_ready("setting");
 					}
-					
+
 					break;
 				case "setting":
 					//1. 테마 BGM 출력
 					bgm(game["theme"]);
-					
+
 					//2. 턴 세팅 : "open" 단계에서 실시
-					
+
 					//3. 랜덤 시드 지정 (두 플레이어간의 랜덤이 "고정"됨)
 					Math.seedrandom(player[1]["code"] + player[2]["code"]);
-					
+
 					//4. 대전 종료 버튼 활성화
 						//a. 문구 변경
 						$("#input_run").value = "대전 종료";
 						//b. 재활성화
 						$("#input_run").disabled = "";
-					
+
 					//5. 다음 단계
 					battle_ready("flip", first, "ready");
-					
+
 					break;
 				case "flip":
 					//1. 카드 뒤집는 이펙트
 					removeClass($("#battle_character_1"),"flipped");
 					removeClass($("#battle_character_2"),"flipped");
-					
+
 					//2. 다음 이벤트
 					auto["event"] = requestTimeout(function() {
 						battle_ready("first", first);
 					}, (1000/game["real_FPS"]) * 60 );
-					
+
 					break;
 				case "first":
 					//1. 선공 결정 - 속도가 빠른 쪽이 선공
@@ -229,7 +229,7 @@
 						//1-1. 속도가 같을 경우 - 두 플레이어의 MD5 코드를 합쳐서 랜덤 처리
 						first = Math.floor(Math.random() * 2) + 1;
 					}
-					
+
 					//2. 속도 표시
 					for (var i=1;i<=2;i++) {
 						$("#battle_character_info_text_" + i.toString()).innerHTML = "속도";
@@ -237,10 +237,10 @@
 						$("#battle_character_info_num_" + i.toString()).innerHTML = player[i]["spd"].toString();
 						$("#battle_character_info_num_" + i.toString()).style.display = "block";
 					}
-					
+
 					//3. 선공 표시
 					$("#battle_character_first_" + first.toString()).style.display = "block";
-					
+
 					//3. 다음 단계
 					auto["event"] = requestTimeout(function() {
 						//선공 표시 지움
@@ -249,49 +249,49 @@
 							$("#battle_character_info_num_" + i.toString()).style.display = "none";
 							$("#battle_character_first_" + first.toString()).style.display = "none";
 						}
-						
+
 						//이동
 						battle_ready("sign", first, "ready");
 					}, (1000/game["real_FPS"]) * 90 );
-					
+
 					break;
 				case "sign":
 					switch (step) {
 						case "ready":
 							//1. "ready" sfx 출력
 							sfx("ready");
-							
+
 							//2. "ready" 사인 표시
 							$("#battle_sign_ready").style.display = "block";
-								
+
 								//3. 처리
 								auto["event"] = requestTimeout(function() {
 									battle_ready("sign", first, "fight");
 								}, (1000/game["real_FPS"]) * 60 )
-							
+
 							break;
 						case "fight":
 							//1. "fight" sfx 출력
 							sfx("fight");
-							
+
 							//2. "ready" 사인 지우기
 							$("#battle_sign_ready").style.display = "none";
-							
+
 							//3. "fight" 사인 표시
 							$("#battle_sign_fight").style.display = "block";
-								
+
 								//다음 처리
 								auto["event"] = requestTimeout(function() {
 									//a. "fight" 사인 지우기
 									$("#battle_sign_fight").style.display = "none";
-									
+
 									//b. 선공부터 전투 실행
 									battle_standby(first, first, 0);
 								}, (1000/game["real_FPS"]) * 60 )
-							
+
 							break
 					}
-					
+
 					break;
 			}
 		}
@@ -306,7 +306,7 @@
 		function battle_standby(shot, action, phase) {
 			//EX. 상대방 지정 변수
 			hit = (shot == 1) ? 2 : 1;
-			
+
 			switch (phase) {
 				//=============================================
 				// ※ A. 분노 & 유리 깨짐 "이펙트" 종료여부 판단
@@ -341,7 +341,7 @@
 						//b-4-1. 타임 오버
 						battle_timeover();
 					}
-					
+
 					break;
 				case 2:
 					//=============================================
@@ -361,22 +361,22 @@
 					}
 					//e. 모션 시작
 					battle_motion(action, "go", null);
-					
+
 					break;
 			}
 		}
-		
-		
-		
+
+
+
 		//전투 - 모션 {
 		function battle_motion(shot, phase, speed) {
 			//A. 공격자(shot) & 상대방(hit) 변수 지정
 			var hit = (shot == 1) ? 2 : 1;
 			//B. 공격자 속도 (없으면) 지정
 			if (!speed) {
-				speed = ( (player[shot]["rage"] + 2) / 3 ) * 30;
+				speed = ( (player[shot]["rage"] + 3) / 3 ) * 30;
 			}
-			
+
 			//D. 공격자(shot) 이동
 			switch (shot) {
 				//B-1. 플레이어 1
@@ -384,7 +384,7 @@
 					//a. 플레이어 지정
 					var $shooter = $("#battle_character_" + shot.toString());
 					var $hitted =  $("#battle_character_" + hit.toString());
-					
+
 					switch (phase) {
 						//b. "접근" 상태
 						case "go":
@@ -400,22 +400,22 @@
 							} else {
 								//b-1-2-1. 접근 완료
 								$shooter.style.left = ($hitted.offsetLeft - $shooter.offsetWidth).toString() + "px";
-								
+
 								//b-1-2-2. "타격" sfx 출력
-								sfx("hit");
-								
+								sfx("hit" + player[shot].rage);
+
 								//b-1-2-3. 이펙트 발동
 								battle_effect(hit, player[shot]["rage"], 1);
-								
+
 								//b-1-2-4. 공격 개시
 								battle_hit(shot);
-								
+
 								//b-1-2-5. 복귀 실시
 								auto["event"] = requestTimeout(function() {
 									battle_motion(shot, "back", speed);
 								}, (1000/game["real_FPS"]) * 1 );
 							}
-							
+
 							break;
 						//b. "복귀" 상태
 						case "back":
@@ -432,17 +432,17 @@
 								//복귀 완료
 								$shooter.style.left = (80).toString() + "px";
 							}
-							
+
 							break;
 					}
-					
+
 					break;
 				//B-2. 플레이어 2
 				case 2:
 					//플레이어 지정
 					var $shooter = $("#battle_character_" + shot.toString());
 					var $hitted =  $("#battle_character_" + hit.toString());
-					
+
 					switch (phase) {
 						//b. "접근" 상태
 						case "go":
@@ -458,16 +458,16 @@
 							} else {
 								//b-1-2-1. 접근 완료
 								$shooter.style.left = ($hitted.offsetLeft + $shooter.offsetWidth).toString() + "px";
-								
+
 								//b-1-2-2. 공격 개시
 								battle_hit(shot);
-								
+
 								//b-1-2-3. 복귀 실시
 								auto["event"] = requestTimeout(function() {
 									battle_motion(shot, "back", speed);
 								}, (1000/game["real_FPS"]) * 1 );
 							}
-							
+
 							break;
 						//b. "복귀" 상태
 						case "back":
@@ -484,35 +484,35 @@
 								//복귀 완료
 								$shooter.style.left = (800 - 80 - $shooter.offsetWidth).toString() + "px";
 							}
-							
-							
+
+
 							break;
 					}
-					
+
 					break;
 			}
 		}
-		
-		
-		
+
+
+
 		//전투 타격 이펙트 & 피격
 		function battle_effect(hit, rage, phase) {
 			//a. 플레이어, 이펙트 지정
 			var $hitted = $("#battle_character_" + hit.toString());
 			var $effect = $("#battle_effect_hit_" + hit.toString() + "_" + rage.toString());
-			
+
 			//b. 이동 간격 지정 (플레이어 위치에 따라 +/- 조절)
 			switch (hit) {
 				case 1:
 					var movement = -10;
-					
+
 					break;
 				case 2:
 					var movement = 10;
-					
+
 					break;
 			}
-			
+
 			//페이즈별 이펙트 상황
 			switch (phase) {
 				case 1://이펙트 1
@@ -525,7 +525,7 @@
 					auto["player"][hit]["hit"] = requestTimeout(function() {
 						battle_effect(hit, rage, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				case 2://이펙트 1
 					//모션
@@ -536,7 +536,7 @@
 					auto["player"][hit]["hit"] = requestTimeout(function() {
 						battle_effect(hit, rage, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				case 3://이펙트 1
 					//모션
@@ -546,25 +546,25 @@
 					auto["player"][hit]["hit"] = requestTimeout(function() {
 						battle_effect(hit, rage, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				case 4://이펙트 복구
 					//모션
 					//이펙트
 					$effect.style.backgroundPosition =  "0px 0px";
 					$effect.style.display = "none"
-					
+
 					break;
 			}
 		}
-		
-		
-		
+
+
+
 		//전투 - 타격
 		function battle_hit(shot) {
 			//A. 공격자(shot) & 상대방(hit) 변수 지정
 			var hit = (shot == 1) ? 2 : 1;
-			
+
 			//B-1. 크리티컬 여부 계산
 			var setCritical = Math.random() < player[shot]["critical_now"] / player[shot]["critical_init"];
 			//B-2. 크리티컬 공격 시
@@ -573,6 +573,7 @@
 				var cri = 1;
 				//a-2. "크리티컬" sfx 출력
 				sfx("critical");
+				sfx("hit" + player[shot].rage);
 				//a-3. 공격력 증폭량 = 크리티컬
 				var add = player[shot]["critical_damage"];
 				//a-4. 크리티컬 효과 표시
@@ -588,7 +589,7 @@
 			//B-3. 일반 공격 시
 			} else {
 				//b-1. "타격" sfx 출력
-				sfx("hit");
+				sfx("hit" + player[shot].rage);
 				//b-2. 공격력 증폭량 = 1
 				var add = 1;
 				//b-3. "공격자" 크리티컬 게이지 증가
@@ -596,7 +597,7 @@
 				//b-4. "공격자" 크리티컬 게이지 (빠르게) 갱신
 				battle_update(shot, "critical", 10, null)
 			}
-			
+
 			//C. 공통 처리 (크리티컬 or NOT)
 				//a. 타격 이펙트 발동
 				battle_effect(hit, player[shot]["rage"], 1);
@@ -610,8 +611,25 @@
 				player[hit]["critical_now"] += 40 * (1 + (damage/player[hit]["life_init"]) * 2);
 				//e. "방어자" 크리티컬 게이지 (빠르게) 갱신
 				battle_update(hit, "critical", 10, null)
-			
-			
+
+				//etc. 타격 이펙트 강화 (옵션 활성화 상태에서만)
+				if ($("#input_option_effect").checked) {
+					//etc1. 화면 충격 이펙트 (분노 1단계 이상)
+					if (player[shot].rage >= 1) {
+						$("#frame_battle").style.webkitFilter = "brightness(3) blur(20px)";
+						$("#frame_battle").style.filter = "brightness(3) blur(20px)";
+						requestTimeout(function() {
+							$("#frame_battle").style.webkitFilter = "brightness(1)";
+							$("#frame_battle").style.filter = "brightness(1)";
+						},10*(player[shot].rage+1));
+					}
+					//etc2. 상시 유리깨짐 이펙트 (분노 3단계 이상)
+					if (player[shot].rage >= 3) {
+						battle_particle(hit, null, 1);
+					}
+				}
+
+
 			//D. 공격자 공격횟수 1 차감
 			player[shot]["hit_remain"] -= 1;
 			//E. 후속조치
@@ -632,17 +650,17 @@
 					battle_update(hit, "life", null, function() {battle_finish(shot, hit, 1)});
 				}
 		}
-		
-		
-		
+
+
+
 		//전투 - 피해수치 표시
 		function battle_damage(hit, damage, phase) {
 			//a. 기존 피해 수치 연속실행 중단 (중첩 방지)
 			clearRequestTimeout(auto["player"][hit]["damage"]);
-			
+
 			//b. 피해 이펙트 선정
 			$effect = $("#battle_damage_" + hit.toString());
-			
+
 			//c. 피해 수치 가시화
 			switch (phase) {
 				//c-1. 페이즈 1
@@ -657,7 +675,7 @@
 						auto["player"][hit]["damage"] = requestTimeout(function() {
 							battle_damage(hit, damage, phase + 1);
 						}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				//c-2. 페이즈 2
 				case 2:
@@ -669,7 +687,7 @@
 						auto["player"][hit]["damage"] = requestTimeout(function() {
 							battle_damage(hit, damage, phase + 1);
 						}, (1000/game["real_FPS"]) * 25 );
-					
+
 					break;
 				//c-3. 마지막 페이즈 (소멸)
 				case 3:
@@ -681,24 +699,24 @@
 					$("#battle_effect_critical_" + hit.toString()).style.display = "none";
 					//연속 실행 = null (중지됨을 판단하기 위해)
 					auto["player"][hit]["damage"] = null;
-					
+
 					break;
 			}
 		}
-		
-		
-		
+
+
+
 		//전투 - 특정 능력치 최신화 ("게임 속도"의 영향을 받음)
 		function battle_update(target, stat, gap, callback) {
 			//1. 기존 최신화 연속실행 비활성화 (중첩 방지)
 			clearRequestTimeout(auto["player"][target][stat]);
-			
+
 			//2. 간격 설정 (최초 업데이트 시) (최소 간격 : 1)
 			if (!gap) {
-				var len = Math.floor(Math.abs( (player[target][stat + "_now"] - player[target][stat + "_real"]) / 20 ));
+				var len = Math.floor(Math.abs( (player[target][stat + "_now"] - player[target][stat + "_real"]) / 15 ));
 				gap = Math.max(1, len);
 			}
-			
+
 			//3. 시각처리 최신화 함수 (반복 사용을 위해)
 			function visualize(vary) {
 				switch (stat) {
@@ -706,32 +724,32 @@
 					case "life":
 						$("#battle_life_num_" + target.toString()).innerHTML = thousand(player[target]["life_real"]);
 						$("#battle_life_bar_" + target.toString()).style.width = ((player[target]["life_real"] / player[target]["life_init"]) * 100).toString() + "%";
-						
+
 						//체력 한정 - 수치가 "0"인가 ? 비시각화 : 시각화
 						if (player[target]["life_real"] == 0) {
 							$("#battle_life_bar_" + target.toString()).style.display = "none";
 						} else {
 							$("#battle_life_bar_" + target.toString()).style.display = "block";
 						}
-						
+
 						break;
 					//공격력
 					case "atk":
 						$("#battle_stat_atk_" + target.toString()).innerHTML = "\
 							<span class='stat_" + vary + "'>" + thousand(player[target]["atk_real"]) + "</span>";
-						
+
 						break;
 					//방어력
 					case "def":
 						$("#battle_stat_def_" + target.toString()).innerHTML = "\
 							<span class='stat_" + vary + "'>" + thousand(player[target]["def_real"]) + "</span>";
-						
+
 						break;
 					//크리티컬
 					case "critical":
 						$("#battle_critical_bar_" + target.toString()).style.height
 							= ((player[target]["critical_real"] / player[target]["critical_init"]) * 100).toString() + "%";
-						
+
 						//크리티컬 한정 - vary가 "max"인가 ? 빨간 색 : 주황색
 						if (vary == "max") {
 							addClass($("#battle_critical_bar_" + target.toString()),"max");
@@ -741,7 +759,7 @@
 						break;
 				}
 			}
-			
+
 			//4. 작동 개시 (수치가 차이가 날 경우)
 			if (player[target][stat + "_real"] != player[target][stat + "_now"]) {
 				//a. 실제 수치보다 높으면 ?
@@ -820,7 +838,7 @@
 							callback();
 						}
 					}
-				//b. 실제 수치보다 낮으면 ? 
+				//b. 실제 수치보다 낮으면 ?
 				} else if (player[target][stat + "_real"] < player[target][stat + "_now"]) {
 					//b-1. (크리티컬 한정) IF ("실제 크리티컬" + gap이 최대 크리티컬 이상)
 					if ( (stat == "critical") && (player[target]["critical_real"] + gap >= player[target]["critical_init"]) ) {
@@ -833,7 +851,7 @@
 						if (callback) {
 							callback();
 						}
-					//b-1. gap보다 간격이 크면 ? 
+					//b-1. gap보다 간격이 크면 ?
 					} else if (player[target][stat + "_real"] + gap < player[target][stat + "_now"]) {
 					//b-1-1. 수치 변경
 					player[target][stat + "_real"] += gap;
@@ -857,18 +875,18 @@
 				}
 			}
 		}
-		
-		
+
+
 		//전투 - 분노 발동 ("게임 속도"의 영향을 받음)
 		function battle_rage (hit, step) {
 			//EX. 기존 이펙트 연속실행 중단 (중첩 방지)
 			clearRequestTimeout(auto["player"][hit]["rage"]);
-			
+
 			//A. 최초 - 수치 변경
 			if (step == 1) {
 				//A-1. "분노" sfx 출력
 				sfx("rage");
-				
+
 				//A-2. 분노 효과 발동
 					//A-2-1. 수치 변경
 					player[hit]["rage"] += 1;
@@ -922,38 +940,38 @@
 				//B-5. 연속 실행 = null (중단됨을 판단하기 위해)
 				auto["player"][hit]["rage"] = null;
 			}
-			
+
 		}
-		
+
 		//전투 - 유리 깨짐 이펙트 ("게임 속도"의 영향을 받음)
 		function battle_particle(hit, type, phase) {
 			//a. 기존 이펙트 연속실행 중단 (중첩 방지)
 			clearRequestTimeout(auto["player"][hit]["particle"]);
-			
+
 			//b. 유리, 이펙트 지정
 			$glass = $("#battle_glass_" + hit.toString());
 			$effect = $("#battle_effect_particle_" + hit.toString());
-			
+
 			//c. 깨진 유리창 종류 결정
 			if (type == "finish") {
 				typeNum = 3;
 			} else {
 				typeNum = player[hit]["rage"] - 1;
 			}
-			
+
 			//c. (페이즈 1 한정) 깨진 유리 표시
 			if (phase == 1) {
 				$glass.style.backgroundPosition = ( -($glass.offsetWidth + 1) * typeNum ).toString() + "px 0px";
 				$glass.style.visibility = "visible";
 			}
-			
+
 			//d. 페이즈별 이펙트
 			switch (phase) {
 				//페이즈 1
 				case 1:
 					//"유리 깨짐" sfx 출력
 					sfx("particle");
-					
+
 					//이펙트
 					$effect.style.backgroundPosition = "0px 0px";
 					$effect.style.display = "block"
@@ -961,7 +979,7 @@
 					auto["player"][hit]["particle"] = requestTimeout(function() {
 						battle_particle(hit, typeNum, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				//페이즈 2
 				case 2:
@@ -971,7 +989,7 @@
 					auto["player"][hit]["particle"] = requestTimeout(function() {
 						battle_particle(hit, typeNum, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				//페이즈 3
 				case 3:
@@ -981,7 +999,7 @@
 					auto["player"][hit]["particle"] = requestTimeout(function() {
 						battle_particle(hit, typeNum, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				//페이즈 4
 				case 4:
@@ -991,7 +1009,7 @@
 					auto["player"][hit]["particle"] = requestTimeout(function() {
 						battle_particle(hit, typeNum, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				//페이즈 5
 				case 5:
@@ -1001,7 +1019,7 @@
 					auto["player"][hit]["particle"] = requestTimeout(function() {
 						battle_particle(hit, typeNum, phase + 1);
 					}, (1000/game["real_FPS"]) * 4 );
-					
+
 					break;
 				//종료 페이즈
 				case 6:
@@ -1010,7 +1028,7 @@
 					$effect.style.display = "none";
 					//연속 실행 = null (중단됨을 판단하기 위해)
 					auto["player"][hit]["particle"] = null;
-					
+
 					break;
 			}
 		}
@@ -1025,7 +1043,7 @@
 		function battle_timeover() {
 			//a. "타임오버 문구" 표시
 			$("#battle_sign_timeover").style.display = "block";
-			
+
 			//b. 체력 잔량 "%"로 계산
 			var p1_remain = parseInt((player[1]["life_real"] / player[1]["life_init"]) * 1000) / 10;
 			var p2_remain = parseInt((player[2]["life_real"] / player[2]["life_init"]) * 1000) / 10;
@@ -1039,46 +1057,46 @@
 			$("#battle_character_info_num_2").innerHTML = p2_remain.toString() + "%";
 			$("#battle_character_info_num_1").style.display = "block";
 			$("#battle_character_info_num_2").style.display = "block";
-			
+
 			//d. IF (플레이어 1 체력이 더 많음 (%))
 			if ( p1_remain > p2_remain ) {
 				//플레이어 1 승리
 				auto["event"] = requestTimeout(function() {
 					battle_finish(1, 2, 1);
 				}, (1000/game["real_FPS"]) * 60 );
-				
+
 			//e. IF (플레이어 2 체력이 더 많음 (%))
 			} else if ( p1_remain < p2_remain ) {
 				//플레이어 2 승리
 				auto["event"] = requestTimeout(function() {
 					battle_finish(2, 1, 1);
 				}, (1000/game["real_FPS"]) * 60 );
-				
+
 			//f. ELSE (비김)
 			} else {
 				//무승부
 				auto["event"] = requestTimeout(function() {
 					battle_finish(0, 0);
 				}, (1000/game["real_FPS"]) * 60 );
-				
+
 			}
 		}
-		
+
 		//전투 - 마무리
 		function battle_finish(shot, hit, phase, step) {
 			//A. 무승부
 			if (shot == 0 && hit == 0) {
 				//1. "TIME OVER" 문구 제거 (timeover 대비용)
 				$("#battle_sign_timeover").style.display = "none";
-				
+
 				//2. (0.2초 후) "무승부" 문구 표시
 				auto["event"] = requestTimeout(function() {
 					$("#battle_sign_draw").style.display = "block";
 				}, (1000/game["real_FPS"]) * 16 );
-				
-				
+
+
 			} else {
-				
+
 				//B. 그 외 (비기지 않음)
 				switch (phase) {
 					//페이즈 1 : 패배 효과 & 타이머 종료
@@ -1097,7 +1115,7 @@
 								game["end"] = 1;
 								//c. 패배 캐릭터 투명도 표시 (="1")
 								$("#battle_image_" + hit.toString()).style.opacity = "1";
-								
+
 							//step 1~9
 							default:
 								//a. 패배 캐릭터 서서히 사라짐
@@ -1106,7 +1124,7 @@
 								auto["event"] = requestTimeout(function() {
 									battle_finish(shot, hit, 1, step + 1);
 								}, (1000/game["real_FPS"]) * 6 );
-								
+
 								break;
 							//step 10
 							case 10:
@@ -1115,35 +1133,35 @@
 								$("#battle_image_" + hit.toString()).style.opacity = "1";
 								//b. 다음 페이즈
 								battle_finish(shot, hit, 2);
-								
+
 								break;
 						}
-						
-						
-						
+
+
+
 						break;
 					//페이즈 2 : 승리 효과
 					case 2:
 						//a. "승리" sfx 출력
 						sfx("victory");
-						
+
 						//b. "TIME OVER" 문구 제거 (timeover 대비용)
 						$("#battle_sign_timeover").style.display = "none";
-						
+
 						//c. 승리 문구 표시
 						$("#battle_sign_win_" + shot.toString()).style.display = "block";
-						
+
 						break;
 				}
-				
+
 			}
 		}
 		/**/
-		
-		
-		
-		
-		
+
+
+
+
+
 		//=================================================================================================================
 		//※ 5. 종료
 		//=================================================================================================================
@@ -1153,7 +1171,7 @@
 			if (!phase) {
 				phase = "ready";
 			}
-			
+
 			switch (phase) {
 				//B. 버튼 설정
 				case "ready":
@@ -1162,12 +1180,12 @@
 						$("#input_run").value = "종료 중...";
 						//b. 버튼 비활성화
 						$("#input_run").disabled = "disabled";
-						
+
 					//B-2. 다음 이벤트
 					auto["end"] = requestTimeout(function() {
 						battle_end("close", 400);
 					}, (1000/game["real_FPS"]) * 1 );
-					
+
 					break;
 				//C. 문 닫기
 				case "close":
@@ -1186,7 +1204,7 @@
 						//D-2. 다음 이벤트
 						battle_end("endEvent");
 					}
-					
+
 					break;
 				//D. 이벤트 종료
 				case "endEvent":
@@ -1196,7 +1214,7 @@
 					sfx("");
 					//D-3. 문 닫는 소리
 					sfx("close");
-					
+
 					//D-4. 모든 이벤트 종료
 					clearRequestTimeout(auto["event"]);
 					auto["event"] = null;
@@ -1208,10 +1226,10 @@
 							}
 						}
 					}
-					
+
 					//D-4. 다음 이벤트
 					battle_end("resetVariable");
-					
+
 					break;
 				//E. 변수 초기화
 				case "resetVariable":
@@ -1257,7 +1275,7 @@
 							$("#battle_glass_" + i.toString()).style.visibility = "hidden";
 							//c. 캐릭터 분노
 							$("#battle_buff_" + i.toString()).opacity = "0";
-							
+
 							//d. 캐릭터 선공 표시
 							$("#battle_character_first_" + i.toString()).style.display = "none";
 							//e. 캐릭터 수치 안내
@@ -1266,7 +1284,7 @@
 							//f. 캐릭터 수치 정보
 							$("#battle_character_info_num_" + i.toString()).innerHTML = "";
 							$("#battle_character_info_num_" + i.toString()).style.display = "none";
-							
+
 							//이펙트 - 히트
 							$("#battle_effect_hit_" + i.toString() + "_0").style.backgroundPosition = "0px 0px";
 							$("#battle_effect_hit_" + i.toString() + "_0").style.display = "none";
@@ -1292,11 +1310,11 @@
 							switch (i) {
 								case 1:
 									$("#battle_character_" + i.toString()).style.left = (80).toString() + "px";
-									
+
 									break;
 								case 2:
 									$("#battle_character_" + i.toString()).style.left = (800 - 80 - $("#battle_character_" + i.toString()).offsetWidth).toString() + "px";
-									
+
 									break;
 							}
 							//b. 캐릭터 뒷면 표시
@@ -1313,17 +1331,17 @@
 						$("#battle_sign_timeover").style.display = "";
 						//d. 문구 - draw game
 						$("#battle_sign_draw").style.display = "";
-						
+
 						//e. 턴 표시
 						$("#battle_turn").innerHTML = game["turn_set"];
-						
+
 						//f. 랜덤 시드
 						Math.seedrandom();
 						//g. 게임 상태
 						game["end"] = 0;
 					//E-5. 다음 이벤트
 					battle_end("complete");
-					
+
 					break;
 				//F. 마무리
 				case "complete":
@@ -1342,10 +1360,10 @@
 							$("#input_run").onclick = function() {
 								run();
 							}
-					
+
 					//b. 도움말 표시
 					$("#frame_help").style.display = "block";
-					
+
 					break;
 			}
 		}
